@@ -15,45 +15,56 @@ import {
 } from "@/components/ui/form"
 import { Input } from './ui/input'
 
-  
+
 
 //interface Props<T extends FieldValues>
 interface Props<T extends FieldValues> {
-    schema: ZodType<T>;
-    defaultValues: T
-    onSubmit: (data: T) => Promise<{ success: boolean, error?: string }>
-    type: "SIGN_IN" | "SIGN_UP"
+  schema: ZodType<T>;
+  defaultValues: T
+  onSubmit: (data: T) => Promise<{ success: boolean, error?: string }>
+  type: "SIGN_IN" | "SIGN_UP"
 }
-const AuthForm = <T extends FieldValues>({ type, schema, defaultValues, onSubmit }: Props<T>) => {
-    const form: UseFormReturn<T> =
-        useForm({
-            resolver: zodResolver(schema),
-            defaultValues: defaultValues as DefaultValues<T>,
-        })
-    const handleSubmit: SubmitHandler<T> = async (data) => { };
-    return (
-        <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-        <FormField
-          control={form.control}
-          name="username"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Username</FormLabel>
-              <FormControl>
-                <Input placeholder="shadcn" {...field} />
-              </FormControl>
-              <FormDescription>
-                This is your public display name.
-              </FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <Button type="submit">Submit</Button>
-      </form>
-    </Form>
-    )
+const AuthForm = <T extends FieldValues>({ type, schema, defaultValues, onSubmit }:
+  Props<T>) => {
+  const isSignIn = type === "SIGN_IN"
+  const form: UseFormReturn<T> =
+    useForm({
+      resolver: zodResolver(schema),
+      defaultValues: defaultValues as DefaultValues<T>,
+    })
+  const handleSubmit: SubmitHandler<T> = async (data) => { };
+  return (
+    <div className="flex flex-col gap-4">
+      <h1 className="text-2xl font-emibold text-white">
+        {isSignIn ? "Welcom back to bookwise" : "Create an account"}
+      </h1>
+      <p className="text-light-100">
+        {isSignIn ? "access the vast collection of resources, and stay updated" : "Pleas fill in the form to create an account"}
+      </p>
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+          <FormField
+            control={form.control}
+            name="username"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Username</FormLabel>
+                <FormControl>
+                  <Input placeholder="shadcn" {...field} />
+                </FormControl>
+                <FormDescription>
+                  This is your public display name.
+                </FormDescription>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <Button type="submit">Submit</Button>
+        </form>
+      </Form>
+    </div>
+
+  )
 }
 
 export default AuthForm
