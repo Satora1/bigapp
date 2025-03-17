@@ -14,6 +14,7 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Input } from './ui/input'
+import Link from "next/link";
 
 
 
@@ -42,7 +43,7 @@ const AuthForm = <T extends FieldValues>({ type, schema, defaultValues, onSubmit
         {isSignIn ? "access the vast collection of resources, and stay updated" : "Pleas fill in the form to create an account"}
       </p>
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+        <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-6 w-full">
           <FormField
             control={form.control}
             name="username"
@@ -62,6 +63,13 @@ const AuthForm = <T extends FieldValues>({ type, schema, defaultValues, onSubmit
           <Button type="submit">Submit</Button>
         </form>
       </Form>
+      <p className="text-center text-base font-medium">
+        {isSignIn ? "Create an account" : "Already have an account?"}
+        <Link href={isSignIn ? "/sign-up" : "/sign-in"} className="font-bold text-primary" >
+          {isSignIn ? "Create an account" : "Sign in"}
+        </Link>
+
+      </p>
     </div>
 
   )
