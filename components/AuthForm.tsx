@@ -1,7 +1,7 @@
 "use client"
 import { zodResolver } from "@hookform/resolvers/zod";
 import React from 'react'
-import { DefaultValues, FieldValues, SubmitHandler, useForm, UseFormReturn } from 'react-hook-form'
+import { DefaultValues, FieldValues, Path, SubmitHandler, useForm, UseFormReturn } from 'react-hook-form'
 import { deoptional, z, ZodType } from 'zod'
 import { Button } from "@/components/ui/button"
 import {
@@ -15,6 +15,7 @@ import {
 } from "@/components/ui/form"
 import { Input } from './ui/input'
 import Link from "next/link";
+import { FIELD_NAMES } from "@/constants";
 
 
 
@@ -47,12 +48,12 @@ const AuthForm = <T extends FieldValues>({ type, schema, defaultValues, onSubmit
           {Object.keys(defaultValues).map((field) =>
           (
             <FormField
-            key={}
+              key={field}
               control={form.control}
-              name="username"
+              name={field as Path<T>}
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Username</FormLabel>
+                  <FormLabel className="capitalize">{FIELD_NAMES[field.name as keyof typeof FIELD_NAMES]}</FormLabel>
                   <FormControl>
                     <Input placeholder="shadcn" {...field} />
                   </FormControl>

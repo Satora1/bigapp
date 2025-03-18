@@ -2,6 +2,7 @@ import Image from 'next/image'
 import React, { ReactNode } from 'react'
 
 const layout = ({ children }: { children: ReactNode }) => {
+    
     return (
         <main className='auth-cointainer'>
             <section className='auth-form'>
