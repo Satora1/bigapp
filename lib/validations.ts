@@ -1,4 +1,3 @@
-import { University } from "lucide-react";
 import { z } from "zod";
 
 export const signUpSchema = z.object({
