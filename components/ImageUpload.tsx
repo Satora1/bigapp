@@ -2,6 +2,9 @@
 import React from 'react'
 import { IKImage, IKVideo, ImageKitProvider, IKUpload, ImageKitContext } from "imagekitio-next";
 import config from '@/lib/config';
+import ImageKit from 'imagekit';
+const { env: { imagekit: { publicKey, urlEndpoint } } } = config;
+
 
 
 const authenticator = async () => {
@@ -21,7 +24,12 @@ const authenticator = async () => {
 
 const ImageUpload = () => {
   return (
-    <div>ImageUpload</div>
+    <ImageKitProvider publicKey={publicKey}
+    urlEndpoint={urlEndpoint}
+    authenticator={authenticator}
+    >
+
+    </ImageKitProvider>
   )
 }
 
