@@ -4,6 +4,7 @@ import { IKImage, IKVideo, ImageKitProvider, IKUpload, ImageKitContext } from "i
 import config from '@/lib/config';
 import { Button } from './ui/button';
 import Image from 'next/image';
+import { toast } from 'sonner';
 const { env: { imagekit: { publicKey, urlEndpoint } } } = config;
 
 
@@ -23,14 +24,24 @@ const authenticator = async () => {
   }
 }
 
-const ImageUpload = ({onFileChange}:{onFileChange:(filePath:string)=>void}) => {
+const ImageUpload = ({ onFileChange }: { onFileChange: (filePath: string) => void }) => {
   const ikUploadRef = useRef(null);
   const [file, setFile] = useState<{ filePath: string } | null>(null)
-  const onError = () => { }
-  const onSuccess = (res:any) => {
+  const onError = (error: any) => {
+    console.log(error)
+    toast("Image upload failed. Try again later", {
+      description: "Please check your network and retry.",
+    });
+    
+  }
+  const onSuccess = (res: any) => {
     setFile(res)
     onFileChange(res.filePath)
-   }
+    toast("Image uploaded successfully", {
+      description: `${res.filePath} uploaded successfully`,
+    });
+    
+  }
   return (
     <ImageKitProvider publicKey={publicKey}
       urlEndpoint={urlEndpoint}
