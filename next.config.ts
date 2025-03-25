@@ -9,7 +9,13 @@ images:{
     },
     {
       protocol:"https",
-      hostname:"m.media-amazon.com"
+      hostname:"m.media-amazon.com",
+      port:"",
+    },
+    {
+      protocol:"https",
+      hostname:"ik.imagekit.io",
+      port:"",
     }
   ]
 }
