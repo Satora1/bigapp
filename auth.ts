@@ -1,4 +1,4 @@
-import NextAuth from "next-auth"
+import NextAuth, { User } from "next-auth"
 import CredentialProvider from "next-auth/providers/credentials"
 import { db } from "./database/drizzle"
 import { users } from "./database/schema"
@@ -21,8 +21,34 @@ export const { handlers, signIn, signOut, auth } = NextAuth(
                     .limit(1)
                 if (user.length === 0) return null;
                 const isValidPassword = await compare(credentials.password.toString(), user[0].password)
+                if (!isValidPassword) return null;
 
+                return {
+                    id: user[0].id.toString(),
+                    email: user[0].email,
+                    name: user[0].fullName,
+                } as User;
             }
-        })]
+        })],
+        pages: {
+            signIn: "/sign-in",
+        },
+        callbacks: {
+            async jwt({ token, user }) {
+                if (user) {
+                    token.id = user.id;
+                    token.name = user.name;
+                }
+                return token;
+            },
+            async session({ session, token }) {
+                if (session.user) {
+                    session.user.id = token.id as string
+                    session.user.name = token.name as string
+                }
+                return session;
+            }
+
+        }
     }
 )
