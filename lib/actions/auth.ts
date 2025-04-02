@@ -24,6 +24,8 @@ const signUp = async (params: AuthCredentials) => {
             universityId,
             universityCard,
         })
+        await signInWithCredentials({ emial, password })
+        return { success: true }
     } catch (error) {
         console.log(error, "sign up error")
         return { success: false, error: "Signup error" }
