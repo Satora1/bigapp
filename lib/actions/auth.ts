@@ -43,7 +43,7 @@ export const signUp = async (params: AuthCredentials) => {
             universityId,
             universityCard,
         })
-        await signInWithCredentials({ emial, password })
+        await signInWithCredentials({ email, password })
         return { success: true }
     } catch (error) {
         console.log(error, "sign up error")

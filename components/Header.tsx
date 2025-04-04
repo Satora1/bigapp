@@ -2,6 +2,7 @@
 import { cn } from '@/lib/utils'
 import Image from 'next/image'
 import Link from 'next/link'
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { usePathname } from 'next/navigation'
 import React from 'react'
 
@@ -17,6 +18,14 @@ const Header = () => {
           <Link href="/library" className={cn("text-base cursor-pointer capitalize", pathName === "/library" ? "text-light-200" : "text-light-100")}>
             Library
           </Link>
+          <li>
+            <Link href="/my-profile">
+            <Avatar>
+              <AvatarImage src="https://github/shadcn.png"/>
+              <AvatarFallback>CN</AvatarFallback>
+            </Avatar>
+            </Link>
+          </li>
         </li>
       </ul>
     </header>
