@@ -5,8 +5,9 @@ import Link from 'next/link'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { usePathname } from 'next/navigation'
 import React from 'react'
+import { Session } from 'next-auth'
 
-const Header = () => {
+const Header = ({ session }: { session: Session }) => {
   const pathName = usePathname()
   return (
     <header className='my-10 flex justify-between gap-5'>
@@ -20,10 +21,10 @@ const Header = () => {
           </Link>
           <li>
             <Link href="/my-profile">
-            <Avatar>
-              <AvatarImage src="https://github/shadcn.png"/>
-              <AvatarFallback>CN</AvatarFallback>
-            </Avatar>
+              <Avatar>
+
+                <AvatarFallback>{session?.user?.name}</AvatarFallback>
+              </Avatar>
             </Link>
           </li>
         </li>

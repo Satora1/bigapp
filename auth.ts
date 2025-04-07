@@ -1,6 +1,7 @@
 import NextAuth, { User } from "next-auth"
 import CredentialProvider from "next-auth/providers/credentials"
 import { db } from "./database/drizzle"
+import { eq } from "drizzle-orm";
 import { users } from "./database/schema"
 import { compare } from "bcryptjs"
 export const { handlers, signIn, signOut, auth } = NextAuth(
