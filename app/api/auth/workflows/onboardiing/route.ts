@@ -2,6 +2,7 @@ import { serve } from "@upstash/workflow/nextjs";
 import { db } from "@/database/drizzle";
 import { users } from "@/database/schema";
 import { eq } from "drizzle-orm";
+import { sendEmail } from "@/lib/workflow";
 
 
 type UserState = "non-active" | "active";
@@ -29,11 +30,15 @@ const getUserState = async (email: string): Promise<UserState> => {
 }
 
 export const { POST } = serve<InitialData>(async (context) => {
-    const { email } = context.requestPayload
-
+    const { email, fullName } = context.requestPayload
+    //welcome emial
     await context.run("new-signup", async () => {
-        await sendEmail("Welcome to the platform", email)
-    })
+        await sendEmail({
+          email,
+          subject: "Welcome to the platform",
+          message: `Welcome ${fullName}!`,
+        });
+      });
 
     await context.sleep("wait-for-3-days", 60 * 60 * 24 * 3)
 
@@ -56,8 +61,4 @@ export const { POST } = serve<InitialData>(async (context) => {
     }
 })
 
-async function sendEmail(message: string, email: string) {
-    // Implement email sending logic here
-    console.log(`Sending ${message} email to ${email}`)
-}
 
