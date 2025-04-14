@@ -2,11 +2,11 @@ import config from "@/lib/config";
 import ImageKit from "imagekit";
 import { NextResponse } from "next/server";
 
-const { env: { imagekit: { publicKey, privatKey, urlEndpoint } } } = config;
+const { env: { imagekit: { publicKey, privateKey, urlEndpoint } } } = config;
 
 const imagekit = new ImageKit({
     publicKey: publicKey,
-    privateKey: privatKey,
+    privateKey: privateKey,
     urlEndpoint: urlEndpoint
 })
 
