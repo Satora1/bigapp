@@ -50,11 +50,19 @@ export const { POST } = serve<InitialData>(async (context) => {
 
         if (state === "non-active") {
             await context.run("send-email-non-active", async () => {
-                await sendEmail("Email to non-active users", email)
+                await sendEmail({
+                    email,
+                    subject: "Are you still there?",
+                    message: `Hi ${fullName}, we noticed you haven't been active for a while. We miss you!`,
+                })
             })
         } else if (state === "active") {
             await context.run("send-email-active", async () => {
-                await sendEmail("Send newsletter to active users", email)
+                await sendEmail({
+                    email,
+                    subject: "Thank you for being active!",
+                    message: `Hi ${fullName}, thank you for being an active user! We appreciate your engagement.`,
+                })
             })
         }
 
