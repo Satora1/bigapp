@@ -5,6 +5,7 @@ import {
     text,
     pgTable,
     date,
+    char,
     pgEnum,
     timestamp,
   } from "drizzle-orm/pg-core";
@@ -26,7 +27,7 @@ import {
     email: text("email").notNull().unique(),
     universityId: integer("university_id").notNull().unique(),
     password: text("password").notNull(),
-    universityCard: text("university_card").notNull(),
+    universityCard: char("university_card").notNull(),
     status: STATUS_ENUM("status").default("PENDING"),
     role: ROLE_ENUM("role").default("USER"),
     lastActivityDate: date("last_activity_date").defaultNow(),
