@@ -22,8 +22,12 @@ const Sidebar = () => {
               <Link href={link.route} key={link.route}>
                 <div className={cn("link", isSelected && "bg-primary-admin shadow-sm")}>
                   <div className='relative size-5'>
-                    <Image src={link.img} alt="icon" fill className={`${isSelected}? "brightness-0 invert" : '' object-containe`} />
+                    <Image src={link.img} alt="icon" fill
+                      className={`${isSelected ? "brightness-0 invert" : ''} object-containe`} />
                   </div>
+                  <p className={cn(isSelected ? "text-white" : "text-dark")}>
+                    {link.text}
+                  </p>
                 </div>
               </Link>
 
