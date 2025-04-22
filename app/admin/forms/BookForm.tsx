@@ -17,6 +17,7 @@ import { useRouter } from "next/navigation";
 import { bookSchema } from "@/lib/validations";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
+import FileUpload from "@/components/FileUpload";
 
 
 
@@ -142,7 +143,14 @@ const BookForm = ({ type,
                                 Book Image
                             </FormLabel>
                             <FormControl>
-                                { }
+                                <FileUpload
+                                    type="image"
+                                    accept="image/*"
+                                    placeholder="Upload book cover image"
+                                    folder="books/covers"
+                                    variant="light"
+                                    onFileChange={field.onChange}
+                                    value={field.value} />
                             </FormControl>
                             <FormMessage />
                         </FormItem>
@@ -180,7 +188,7 @@ const BookForm = ({ type,
                         </FormItem>
                     )}
                 />
-                  <FormField
+                <FormField
                     control={form.control}
                     name={"videoUrl"}
                     render={({ field }) => (
@@ -189,13 +197,20 @@ const BookForm = ({ type,
                                 Book Video
                             </FormLabel>
                             <FormControl>
-                                { }
+                            <FileUpload
+                                    type="video"
+                                    accept="video/*"
+                                    placeholder="Upload book triler"
+                                    folder="books/videos"
+                                    variant="light"
+                                    onFileChange={field.onChange}
+                                    value={field.value} />
                             </FormControl>
                             <FormMessage />
                         </FormItem>
                     )}
                 />
-                 <FormField
+                <FormField
                     control={form.control}
                     name={"summary"}
                     render={({ field }) => (
