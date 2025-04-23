@@ -5,12 +5,12 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 
 import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
+    Form,
+    FormControl,
+    FormField,
+    FormItem,
+    FormLabel,
+    FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { useRouter } from "next/navigation";
@@ -35,26 +35,30 @@ const BookForm = ({ type,
     const form = useForm<z.infer<typeof bookSchema>>({
         resolver: zodResolver(bookSchema),
         defaultValues: {
-          title: "",
-          description: "",
-          author: "",
-          genre: "",
-          rating: 1,
-          totalCopies: 1,
-          coverUrl: "",
-          coverColor: "",
-          videoUrl: "",
-          summary: "",
+            title: "",
+            description: "",
+            author: "",
+            genre: "",
+            rating: 1,
+            totalCopies: 1,
+            coverUrl: "",
+            coverColor: "",
+            videoUrl: "",
+            summary: "",
         },
-      });
-    
+    });
+
 
     const onSubmit = async (values: z.infer<typeof bookSchema>) => {
-        console.log(values)
-    }   
+        console.log("✅ onSubmit fired:", values);
+    };
+
+    const onError = (errors: any) => {
+        console.log("❌ validation errors:", errors);
+    };
     return (
         <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+            <form onSubmit={form.handleSubmit(onSubmit, onError)} className="space-y-8">
 
                 <FormField
                     control={form.control}
@@ -92,6 +96,26 @@ const BookForm = ({ type,
                         </FormItem>
                     )}
                 />
+                  <FormField
+          control={form.control}
+          name={"genre"}
+          render={({ field }) => (
+            <FormItem className="flex flex-col gap-1">
+              <FormLabel className="text-base font-normal text-dark-500">
+                Genre
+              </FormLabel>
+              <FormControl>
+                <Input
+                  required
+                  placeholder="Book genre"
+                  {...field}
+                  className="book-form_input"
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
                 <FormField
                     control={form.control}
                     name={"rating"}
@@ -149,7 +173,7 @@ const BookForm = ({ type,
                                     placeholder="Upload a book cover"
                                     folder="books/covers"
                                     variant="light"
-                                    onFileChange={(url)=>field.onChange(url)}
+                                    onFileChange={(url) => field.onChange(url)}
                                     value={field.value}
                                 />
                             </FormControl>
@@ -228,9 +252,10 @@ const BookForm = ({ type,
                         </FormItem>
                     )}
                 />
-           <Button type="submit" className="book-form_btn text-white">
-          Add Book to Library
-        </Button>
+                <Button type="submit" className="book-form_btn text-white" onClick={() => console.log("ok")}>
+                    Add Book to Library
+
+                </Button>
             </form>
         </Form>
 
