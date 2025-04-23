@@ -5,12 +5,12 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 
 import {
-    Form,
-    FormControl,
-    FormField,
-    FormItem,
-    FormLabel,
-    FormMessage,
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { useRouter } from "next/navigation";
@@ -18,7 +18,7 @@ import { bookSchema } from "@/lib/validations";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import FileUpload from "@/components/FileUpload";
-
+import ColorPicker from "@/components/admin/ColorPicker";
 
 
 
@@ -32,27 +32,27 @@ const BookForm = ({ type,
     const router = useRouter()
 
 
-    const form = useForm<z.infer<typeof bookSchema>>
-        ({
-            resolver: zodResolver(bookSchema),
-            defaultValues: {
-                title: " ",
-                description: " ",
-                author: " ",
-                dgenre: " ",
-                rating: 1,
-                totalCopies: 1,
-                coverUrl: " ",
-                coverCorol: " ",
-                videoUrl: " ",
-                summary: " ",
-            }
-        })
+    const form = useForm<z.infer<typeof bookSchema>>({
+        resolver: zodResolver(bookSchema),
+        defaultValues: {
+          title: "",
+          description: "",
+          author: "",
+          genre: "",
+          rating: 1,
+          totalCopies: 1,
+          coverUrl: "",
+          coverColor: "",
+          videoUrl: "",
+          summary: "",
+        },
+      });
+    
+
     const onSubmit = async (values: z.infer<typeof bookSchema>) => {
-
-    }
+        console.log(values)
+    }   
     return (
-
         <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
 
@@ -146,11 +146,12 @@ const BookForm = ({ type,
                                 <FileUpload
                                     type="image"
                                     accept="image/*"
-                                    placeholder="Upload book cover image"
+                                    placeholder="Upload a book cover"
                                     folder="books/covers"
                                     variant="light"
-                                    onFileChange={field.onChange}
-                                    value={field.value} />
+                                    onFileChange={(url)=>field.onChange(url)}
+                                    value={field.value}
+                                />
                             </FormControl>
                             <FormMessage />
                         </FormItem>
@@ -158,14 +159,14 @@ const BookForm = ({ type,
                 />
                 <FormField
                     control={form.control}
-                    name={"coverCorol"}
+                    name={"coverColor"}
                     render={({ field }) => (
                         <FormItem className="flex flex-col gap-1">
                             <FormLabel className="text-base font-normal text-dark-500">
                                 Primary Color
                             </FormLabel>
                             <FormControl>
-                                { }
+                                <ColorPicker onPickerChange={field.onChange} value={field.value} />
                             </FormControl>
                             <FormMessage />
                         </FormItem>
@@ -197,7 +198,7 @@ const BookForm = ({ type,
                                 Book Video
                             </FormLabel>
                             <FormControl>
-                            <FileUpload
+                                <FileUpload
                                     type="video"
                                     accept="video/*"
                                     placeholder="Upload book triler"
@@ -227,9 +228,9 @@ const BookForm = ({ type,
                         </FormItem>
                     )}
                 />
-                <Button type="submit" className="book-form_btn text-white">
-                    Add book to library
-                </Button>
+           <Button type="submit" className="book-form_btn text-white">
+          Add Book to Library
+        </Button>
             </form>
         </Form>
 
