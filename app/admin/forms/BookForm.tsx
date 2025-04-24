@@ -19,6 +19,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import FileUpload from "@/components/FileUpload";
 import ColorPicker from "@/components/admin/ColorPicker";
+import { createBook } from "@/lib/admin/actions/book";
+import { toast } from "sonner";
 
 
 
@@ -38,7 +40,7 @@ const BookForm = ({ type,
             title: "",
             description: "",
             author: "",
-            genre: "",
+            genre: "All",
             rating: 1,
             totalCopies: 1,
             coverUrl: "",
@@ -50,7 +52,14 @@ const BookForm = ({ type,
 
 
     const onSubmit = async (values: z.infer<typeof bookSchema>) => {
+        const result = await createBook(values);
         console.log("✅ onSubmit fired:", values);
+        if (result.success) {
+            router.push(`/admin/books/${result.data.id}`)
+        }
+        else toast("error", {
+            description: result.message,
+        })
     };
 
     const onError = (errors: any) => {
@@ -96,26 +105,26 @@ const BookForm = ({ type,
                         </FormItem>
                     )}
                 />
-                  <FormField
-          control={form.control}
-          name={"genre"}
-          render={({ field }) => (
-            <FormItem className="flex flex-col gap-1">
-              <FormLabel className="text-base font-normal text-dark-500">
-                Genre
-              </FormLabel>
-              <FormControl>
-                <Input
-                  required
-                  placeholder="Book genre"
-                  {...field}
-                  className="book-form_input"
+                <FormField
+                    control={form.control}
+                    name={"genre"}
+                    render={({ field }) => (
+                        <FormItem className="flex flex-col gap-1">
+                            <FormLabel className="text-base font-normal text-dark-500">
+                                Genre
+                            </FormLabel>
+                            <FormControl>
+                                <Input
+                                    required
+                                    placeholder="Book genre"
+                                    {...field}
+                                    className="book-form_input"
+                                />
+                            </FormControl>
+                            <FormMessage />
+                        </FormItem>
+                    )}
                 />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
                 <FormField
                     control={form.control}
                     name={"rating"}
