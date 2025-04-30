@@ -15,6 +15,13 @@
       "when": 1745502036398,
       "tag": "0001_chief_warlock",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1746005456269,
+      "tag": "0002_tranquil_fallen_one",
+      "breakpoints": true
     }
   ]
 }

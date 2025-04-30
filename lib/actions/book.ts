@@ -1,8 +1,10 @@
 "use server"
 
 import { db } from "@/database/drizzle"
-import { books } from "@/database/schema"
+import { books, borrowRecords } from "@/database/schema"
 import { eq } from "drizzle-orm"
+import dayjs from "dayjs";
+
 
 export const borrowBook = async (params: BorrowBookParams) => {
     const { userId, bookId } = params
@@ -17,8 +19,16 @@ if(!book.length||book[0].availableCopies<=0){
         error: "Book not available"
     }
 }
-const dueDate = new Date()
-
+const dueDate = dayjs().add(7, "day").toDate().toDateString()
+const record=db.insert(borrowRecords).values({
+    userId,bookId,dueDate,status:"BORROWED"
+}) 
+await await db.update(books).set({availableCopies:book[0].availableCopies-1})
+.where(eq(books.id,bookId))
+return{
+    sucess:true,
+    data:JSON.parse(JSON.stringify(record))
+}
     } catch (error) {
         console.log(error)
         return {
