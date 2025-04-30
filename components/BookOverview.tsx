@@ -5,13 +5,17 @@ import BookCover from './BookCover'
 import BorrowBook from './BorrowBook'
 import { db } from '@/database/drizzle'
 import { eq, is } from 'drizzle-orm'
+import { users } from '@/database/schema'
 interface Props extends Book {
     userId: string
 }
 const BookOverview = async ({ id, userId, title, author, genre, rating, totalCopies, availableCopies, description, coverColor, coverUrl }: Props) => {
 
-    const [user] = await db.select().from("users")
-        .where(eq(id: userId)).limit(1)
+    const [user] = await db
+        .select()
+        .from(users)
+        .where(eq(users.id, userId))
+        .limit(1)
     if (!user) return null
     const borrowingEligibility = {
         isEligible: availableCopies > 0 && user.status === "APPROVED",
@@ -61,7 +65,7 @@ const BookOverview = async ({ id, userId, title, author, genre, rating, totalCop
                 <p className='book-description'>
                     {description}
                 </p>
-                <BorrowBook bookId={id} userId={userId} borrowingEligibility={borrowingEligibility}/>
+                <BorrowBook bookId={id} userId={userId} borrowingEligibility={borrowingEligibility} />
             </div>
             <div className='relative flex flex-1 justify-center'>
                 <div className='relative'>
