@@ -5,6 +5,7 @@ import { eq } from "drizzle-orm";
 import { redirect } from "next/navigation";
 import { auth } from "@/auth";
 import BookOverview from "@/components/BookOverview";
+import BookVideo from "@/components/BookVideo";
 
 const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
   const id = (await params).id;
@@ -28,7 +29,7 @@ const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
             <h3>
               Video
             </h3>
-            Video Component
+            <BookVideo videoUrl={bookDetails.videoUrl} />
           </section>
           <section className="mt-10 flex flex-col gap-7">
             <h3>
