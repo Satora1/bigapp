@@ -47,6 +47,7 @@ const BookForm = ({ type,
             coverColor: "",
             videoUrl: "",
             summary: "",
+            vintedLink: "",
         },
     });
 
@@ -75,11 +76,29 @@ const BookForm = ({ type,
                     render={({ field }) => (
                         <FormItem className="flex flex-col gap-1">
                             <FormLabel className="text-base font-normal text-dark-500">
-                                Book Title                            </FormLabel>
+                               Title                        </FormLabel>
                             <FormControl>
 
                                 <Input required
-                                    placeholder="Book title"
+                                    placeholder="Title"
+                                    {...field}
+                                    className="book-form_input" />
+                            </FormControl>
+                            <FormMessage />
+                        </FormItem>
+                    )}
+                />
+                 <FormField
+                    control={form.control}
+                    name={"vintedLink"}
+                    render={({ field }) => (
+                        <FormItem className="flex flex-col gap-1">
+                            <FormLabel className="text-base font-normal text-dark-500">
+                               Vinted Link                        </FormLabel>
+                            <FormControl>
+
+                                <Input required
+                                    placeholder="Link"
                                     {...field}
                                     className="book-form_input" />
                             </FormControl>
@@ -93,11 +112,11 @@ const BookForm = ({ type,
                     render={({ field }) => (
                         <FormItem className="flex flex-col gap-1">
                             <FormLabel className="text-base font-normal text-dark-500">
-                                Author                           </FormLabel>
+                                Made By                           </FormLabel>
                             <FormControl>
 
                                 <Input required
-                                    placeholder="Book Author"
+                                    placeholder="Author"
                                     {...field}
                                     className="book-form_input" />
                             </FormControl>
@@ -125,7 +144,7 @@ const BookForm = ({ type,
                         </FormItem>
                     )}
                 />
-                <FormField
+                {/* <FormField
                     control={form.control}
                     name={"rating"}
                     render={({ field }) => (
@@ -145,7 +164,7 @@ const BookForm = ({ type,
                             <FormMessage />
                         </FormItem>
                     )}
-                />
+                /> */}
                 <FormField
                     control={form.control}
                     name={"totalCopies"}
@@ -262,7 +281,7 @@ const BookForm = ({ type,
                     )}
                 />
                 <Button type="submit" className="book-form_btn text-white" onClick={() => console.log("ok")}>
-                    Add Book to Library
+                    Add Item to Library
 
                 </Button>
             </form>

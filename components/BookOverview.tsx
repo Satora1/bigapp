@@ -6,10 +6,11 @@ import BorrowBook from './BorrowBook'
 import { db } from '@/database/drizzle'
 import { eq, is } from 'drizzle-orm'
 import { users } from '@/database/schema'
+import Link from 'next/link'
 interface Props extends Book {
     userId: string
 }
-const BookOverview = async ({ id, userId, title, author, genre, rating, totalCopies, availableCopies, description, coverColor, coverUrl }: Props) => {
+const BookOverview = async ({ id, userId, title, author, genre, rating, totalCopies, availableCopies, description, coverColor, coverUrl,vintedLink }: Props) => {
 
     const [user] = await db
         .select()
@@ -31,7 +32,7 @@ const BookOverview = async ({ id, userId, title, author, genre, rating, totalCop
                 </h1>
                 <div className='book-info'>
                     <p>
-                        By{" "}
+                       Made By{" "}
                         <span className='font-semibold text-light-200'>
                             {author}
                         </span>
@@ -43,43 +44,48 @@ const BookOverview = async ({ id, userId, title, author, genre, rating, totalCop
                         </span>
                     </p>
                     <div className='flex flex-row gap-1'>
-                        <Image src="/icons/star.svg" alt="star" width={22} height={22} />
+                        {/* <Image src="/icons/star.svg" alt="star" width={22} height={22} />
                         <p>
                             {rating}
-                        </p>
+                        </p> */}
                     </div>
                 </div>
                 <div className='book-copies'>
                     <p>
-                        Total Books: <span>
+                    Available Items: <span>
 
                             {totalCopies}
                         </span>
                     </p>
-                    <p>
-                        Available Books: <span>
+                    {/* <p>
+                        Available Items: <span>
                             {availableCopies}
                         </span>
-                    </p>
+                    </p> */}
                 </div>
                 <p className='book-description'>
                     {description}
                 </p>
-                <BorrowBook bookId={id} userId={userId} borrowingEligibility={borrowingEligibility} />
+                {/* <BorrowBook bookId={id} userId={userId} borrowingEligibility={borrowingEligibility}  /> */}
+                <Button asChild>
+  <Link href={vintedLink} target="_blank" rel="noopener noreferrer">
+    Offer Link
+  </Link>
+</Button>
             </div>
-            <div className='relative flex flex-1 justify-center'>
+            <div className='relative flex flex-1 justify-center '>
                 <div className='relative'>
                     <BookCover
-                        variant="wide"
-                        className="z-10"
+                        variant="customSize"
+                        className="z-10 "
                         coverColor={coverColor}
                         coverImage={coverUrl} />
-                    <div className='absolutr left-16 top-10 rotate-12 opacity-40 max-sm:hidden'>
+                    {/* <div className='absolutr left-16 top-10 rotate-12 opacity-40 max-sm:hidden'>
                         <BookCover
                             variant="wide"
                             coverColor={coverColor}
                             coverImage={coverUrl} />
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </section>

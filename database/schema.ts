@@ -44,7 +44,7 @@ export const books = pgTable("books", {
   title: varchar("title", { length: 100 }).notNull(),
   author: varchar("author", { length: 100 }).notNull(),
   genre: varchar("genre", { length: 50 }).notNull(),
-  rating: integer("rating").notNull(),
+  rating: integer("rating"),
   coverUrl: text("cover_url").notNull(),
   coverColor: varchar("cover_color", { length: 7 }).notNull(),
   description: text("description").notNull(),
@@ -52,6 +52,7 @@ export const books = pgTable("books", {
   availableCopies: integer("available_copies").notNull().default(0),
   videoUrl: text("video_url").notNull(),
   summary: text("summary").notNull(),
+  vintedLink:text("vinted_link").notNull(),
   createdAt: timestamp("created_at", { withTimezone: true }).defaultNow(),
 
 })

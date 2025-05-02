@@ -11,6 +11,7 @@ CREATE TABLE "books" (
 	"available_copies" integer DEFAULT 0 NOT NULL,
 	"video_url" text NOT NULL,
 	"summary" text NOT NULL,
+	"vinted_link" text NOT NULL,
 	"created_at" timestamp with time zone DEFAULT now(),
 	CONSTRAINT "books_id_unique" UNIQUE("id")
 );
