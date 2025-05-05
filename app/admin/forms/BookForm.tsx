@@ -44,6 +44,7 @@ const BookForm = ({ type,
             rating: 1,
             totalCopies: 1,
             coverUrl: "",
+            coverUrl2: "",
             coverColor: "",
             videoUrl: "",
             summary: "",
@@ -192,7 +193,7 @@ const BookForm = ({ type,
                     render={({ field }) => (
                         <FormItem className="flex flex-col gap-1">
                             <FormLabel className="text-base font-normal text-dark-500">
-                                Book Image
+                                Image 1
                             </FormLabel>
                             <FormControl>
                                 <FileUpload
@@ -209,6 +210,30 @@ const BookForm = ({ type,
                         </FormItem>
                     )}
                 />
+                      <FormField
+                    control={form.control}
+                    name={"coverUrl2"}
+                    render={({ field }) => (
+                        <FormItem className="flex flex-col gap-1">
+                            <FormLabel className="text-base font-normal text-dark-500">
+                                 Image 2
+                            </FormLabel> 
+                            <FormControl>
+                                <FileUpload
+                                    type="image"
+                                    accept="image/*"
+                                    placeholder="Upload a book cover"
+                                    folder="books/covers"
+                                    variant="light"
+                                    onFileChange={(url) => field.onChange(url)}
+                                    value={field.value}
+                                />
+                            </FormControl>
+                            <FormMessage />
+                        </FormItem>
+                    )}
+                />
+                
                 <FormField
                     control={form.control}
                     name={"coverColor"}

@@ -10,7 +10,7 @@ import Link from 'next/link'
 interface Props extends Book {
     userId: string
 }
-const BookOverview = async ({ id, userId, title, author, genre, rating, totalCopies, availableCopies, description, coverColor, coverUrl,vintedLink }: Props) => {
+const BookOverview = async ({ id, userId, title, author, genre, rating, totalCopies, availableCopies, description, coverColor, coverUrl,vintedLink ,coverUrl2}: Props) => {
 
     const [user] = await db
         .select()
@@ -79,7 +79,9 @@ const BookOverview = async ({ id, userId, title, author, genre, rating, totalCop
                         variant="customSize"
                         className="z-10 "
                         coverColor={coverColor}
-                        coverImage={coverUrl} />
+                        coverImage={coverUrl} 
+                        coverImage2={coverUrl2}/>
+                
                     {/* <div className='absolutr left-16 top-10 rotate-12 opacity-40 max-sm:hidden'>
                         <BookCover
                             variant="wide"

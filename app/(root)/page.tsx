@@ -23,6 +23,10 @@ const Home = async () => {
         books={latestBooks.slice(1)}
         containerClassName="mt-28"
       />
+<div className="mt-20 text-xl">
+  <h2 className="text-white">Satora.shop ®</h2>
+</div>
+
     </>
   );
 };

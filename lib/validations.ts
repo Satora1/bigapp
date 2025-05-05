@@ -21,6 +21,7 @@ export const bookSchema = z.object({
   rating: z.coerce.number().min(1).max(5).optional(),
   totalCopies: z.coerce.number().min(1),
   coverUrl: z.string().optional(),
+  coverUrl2: z.string().optional(),
   coverColor: z.string().trim().regex(/^#[0-9A-F]{6}$/i, "Invalid hex color code"),
   videoUrl: z.string().optional(),
   vintedLink: z.string().optional(),

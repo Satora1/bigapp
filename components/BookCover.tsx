@@ -1,12 +1,13 @@
 "use client";
-import { cn } from '@/lib/utils';
-import Image from 'next/image';
-import React from 'react';
-import BookCoverSvg from './BookCoverSvg';
-import { IKImage } from 'imagekitio-next';
-import config from '@/lib/config';
+import React from "react";
+import { IKImage } from "imagekitio-next";
+import config from "@/lib/config";
 
-
+interface Props {
+  coverImage?: string;
+  backText?: string;
+  coverUrl2?:string
+}
 type BookCoverVariant = "extrasmall" | "small" | "medium" | "regular" | "wide"| "customSize";
 
 const variantStyles: Record<BookCoverVariant, string> = {
@@ -23,31 +24,36 @@ interface Props {
   variant?: BookCoverVariant;
   coverColor?: string;
   coverImage?: string;
+  coverImage2?: string;
 }
-
-const BookCover = ({
-  className ,
-  variant = "wide",
-  coverColor = "#012B48",
-  coverImage = "https://placehold.co/400x600.png",
+const BookCoverFlip = ({
+  coverImage = "https://placehold.co/600x600.png",
+  coverImage2 = "https://placehold.co/600x600.png",
 }: Props) => {
   return (
-    <div
-      className={cn("relative transition-all duration-300",
-        variantStyles[variant],
-        className
-      )}
-      style={{ backgroundColor: coverColor }}
-    >
-      {/* <BookCoverSvg coverColor={coverColor} /> */}
-      <div className="absolute z-10 inset-[7%]">
-      <IKImage path={coverImage} urlEndpoint={config.env.imagekit.urlEndpoint} alt="Book cover" fill className='rounded-sm object-fill' 
-        loading='lazy'
-        lqip={{ active: true }}
+    <div className="card big-card">
+      <div className="first-content">
+        <IKImage
+          path={coverImage}
+          urlEndpoint={config.env.imagekit.urlEndpoint}
+          alt="Book cover"
+          width={600}
+          height={600}
+          className="rounded-md object-fill"
+        />
+      </div>
+      <div className="second-content">
+      <IKImage
+          path={coverImage2}
+          urlEndpoint={config.env.imagekit.urlEndpoint}
+          alt="Book cover"
+          width={600}
+          height={600}
+          className="rounded-md object-fill"
         />
       </div>
     </div>
   );
 };
 
-export default BookCover;
+export default BookCoverFlip;

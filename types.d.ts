@@ -9,6 +9,7 @@ interface Book{
           description:string
            coverColor:string
             coverUrl:string
+            coverUrl2:string
             videoUrl:string
             summary:string
             vintedLink:string
