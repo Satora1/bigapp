@@ -5,6 +5,7 @@
 @layer base {
   :root {
     --radius: 0.5rem;
+    
   }
 
   html, body {
@@ -231,7 +232,7 @@
 
 @layer utilities {
   .gradient-vertical {
-    background: linear-gradient(180deg, #12141d 0%, #12151f 100%);
+    background: linear-gradient(180deg, #8991b3 0%, #12151f 100%);
   }
 
   .gradient-gray {
