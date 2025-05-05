@@ -12,8 +12,9 @@ const Page = () => (
             email: "",
             password: "",
             fullName: "",
-            universityId: 0,
-            universityCard: "",
+            vintedNickname: "",
+            // universityCard: '',
+            // universityId: 0,
         }}
         onSubmit={signUp}
     />

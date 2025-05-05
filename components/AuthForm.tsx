@@ -32,6 +32,7 @@ interface Props<T extends FieldValues> {
 }
 const AuthForm = <T extends FieldValues>({ type, schema, defaultValues, onSubmit }:
   Props<T>) => {
+    
   const router = useRouter()
   const isSignIn = type === "SIGN_IN"
   const form: UseFormReturn<T> =
@@ -58,8 +59,8 @@ const AuthForm = <T extends FieldValues>({ type, schema, defaultValues, onSubmit
   };
   return (
     <div className="flex flex-col gap-4">
-      <h1 className="text-2xl font-emibold text-white">
-        {isSignIn ? "Welcom back to bookwise" : "Create an account"}
+      <h1 className="text-2xl font-semibold text-white">
+        {isSignIn ? "Welcom back " : "Create an account"}
       </h1>
       <p className="text-light-100">
         {isSignIn ? "access the vast collection of resources, and stay updated" : "Pleas fill in the form to create an account"}
@@ -78,19 +79,19 @@ const AuthForm = <T extends FieldValues>({ type, schema, defaultValues, onSubmit
                     {FIELD_NAMES[field.name as keyof typeof FIELD_NAMES]}
                   </FormLabel>
                   <FormControl>
-                    {field.name === "universityCard" ? (
+                    {/* {field.name === "universityCard" ? (
                       <FileUpload type="image"
                       accept="image/*"
                       placeholder="Upload your university card"
                       folder="ids"
                       variant="dark"
                       onFileChange={field.onChange} />
-                    ) : (
+                    ) : ( */}
                       <Input required  type=
                         {FIELD_TYPES[field.name as keyof typeof FIELD_TYPES]}
                         {...field}
                         className="form-input" />
-                    )}
+                    {/* )} */}
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -103,7 +104,6 @@ const AuthForm = <T extends FieldValues>({ type, schema, defaultValues, onSubmit
         </form>
       </Form>
       <p className="text-center text-base font-medium">
-        {isSignIn ? "Create an account" : "Already have an account?"}
         <Link href={isSignIn ? "/sign-up" : "/sign-in"} className="font-bold text-primary" >
           {isSignIn ? "Create an account" : "Sign in"}
         </Link>

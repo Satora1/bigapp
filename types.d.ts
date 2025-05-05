@@ -21,6 +21,7 @@ interface AuthCredentials{
   email:string
   password:string
   universityId:number
+  vintedNickname:string
   universityCard:string
 }
 

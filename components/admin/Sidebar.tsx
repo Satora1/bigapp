@@ -17,7 +17,7 @@ const Sidebar = ({ session }: { session: Session  }) => {
         <div className='logo'>
           <Image src="/icons/admin/logo.svg" alt="logo" height={37} width={37} />
           <h1>
-            BookWise
+            Shop
           </h1>
         </div>
         <div className='mt-10 flex flex-col gap-5'>
