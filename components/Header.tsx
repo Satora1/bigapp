@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { signOut } from "@/auth";
 import { Button } from "@/components/ui/button";
+import { redirect } from "next/navigation";
 
 const Header = () => {
   return (
@@ -11,23 +12,30 @@ const Header = () => {
       </Link>
 
       <ul className="flex flex-row items-center gap-8">
-        <li>
-          <form
-            action={async () => {
-              "use server";
+  <li className="flex flex-row gap-4">
+    <form
+      action={async () => {
+        "use server";
+        redirect("/my-profile");
+      }}
+    >
+      <Button className="h-20 w-40 px-12">
+        <h2 className="text-xl">Account</h2>
+      </Button>
+    </form>
 
-              await signOut();
-            }}
-            className="mb-10"
-          >
-            <Button className="h-20 w-40 px-12">
-              <h2 className="text-xl">
-                Logout
-              </h2>
-              </Button>
-          </form>
-        </li>
-      </ul>
+    <form
+      action={async () => {
+        "use server";
+        await signOut();
+      }}
+    >
+      <Button className="h-20 w-40">
+        <h2 className="text-xl">Logout</h2>
+      </Button>
+    </form>
+  </li>
+</ul>
     </header>
   );
 };

@@ -19,7 +19,7 @@ const Home = async () => {
       <BookOverview {...latestBooks[0]} userId={session?.user?.id as string} />
 
       <BookList
-        title="Latest Books"
+        title="Latest Items"
         books={latestBooks.slice(1)}
         containerClassName="mt-28"
       />
