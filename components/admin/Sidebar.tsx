@@ -15,8 +15,8 @@ const Sidebar = ({ session }: { session: Session  }) => {
     <div className='admin-sidebar'>
       <div>
         <div className='logo'>
-          <Image src="/icons/admin/logo.svg" alt="logo" height={37} width={37} />
-          <h1>
+          <Image src="/icons/logo.svg" alt="logo" height={50} width={50}  className='ml-2'/>
+          <h1 className='ml-7'>
             Shop
           </h1>
         </div>

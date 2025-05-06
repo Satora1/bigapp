@@ -1,16 +1,21 @@
-import Image from 'next/image'
+
 import React from 'react'
 import { Button } from './ui/button'
 import BookCover from './BookCover'
-import BorrowBook from './BorrowBook'
 import { db } from '@/database/drizzle'
 import { eq, is } from 'drizzle-orm'
-import { users } from '@/database/schema'
+import { books, users } from '@/database/schema'
 import Link from 'next/link'
+import placeOrder from './PlaceOrder'
+import PlaceOrder from './PlaceOrder'
 interface Props extends Book {
     userId: string
 }
-const BookOverview = async ({ id, userId, title, author, genre, rating, totalCopies, availableCopies, description, coverColor, coverUrl,vintedLink ,coverUrl2}: Props) => {
+const BookOverview = async ({ id, userId, title, author, genre, rating, totalCopies, availableCopies, description, coverColor, coverUrl, vintedLink, coverUrl2 }: Props) => {
+
+
+
+
 
     const [user] = await db
         .select()
@@ -32,7 +37,7 @@ const BookOverview = async ({ id, userId, title, author, genre, rating, totalCop
                 </h1>
                 <div className='book-info'>
                     <p>
-                       Made By{" "}
+                        Made By{" "}
                         <span className='font-semibold text-light-200'>
                             {author}
                         </span>
@@ -52,7 +57,7 @@ const BookOverview = async ({ id, userId, title, author, genre, rating, totalCop
                 </div>
                 <div className='book-copies'>
                     <p>
-                    Available Items: <span>
+                        Available Items: <span>
 
                             {totalCopies}
                         </span>
@@ -67,11 +72,19 @@ const BookOverview = async ({ id, userId, title, author, genre, rating, totalCop
                     {description}
                 </p>
                 {/* <BorrowBook bookId={id} userId={userId} borrowingEligibility={borrowingEligibility}  /> */}
-                <Button asChild>
-  <Link href={vintedLink} target="_blank" rel="noopener noreferrer">
-    Offer Link
-  </Link>
-</Button>
+                <ul className='flex flex-row gap-5'>
+                    <p>
+                        < Button asChild>
+                            <Link href={vintedLink} target="_blank" rel="noopener noreferrer">
+                                Offer Link
+                            </Link>
+                        </Button>
+                    </p>
+                    <p >
+
+                        {/* <PlaceOrder id={id} /> */}
+                    </p>
+                </ul>
             </div>
             <div className='relative flex flex-1 justify-center '>
                 <div className='relative'>
@@ -79,9 +92,9 @@ const BookOverview = async ({ id, userId, title, author, genre, rating, totalCop
                         variant="customSize"
                         className="z-10 "
                         coverColor={coverColor}
-                        coverImage={coverUrl} 
-                        coverImage2={coverUrl2}/>
-                
+                        coverImage={coverUrl}
+                        coverImage2={coverUrl2} />
+
                     {/* <div className='absolutr left-16 top-10 rotate-12 opacity-40 max-sm:hidden'>
                         <BookCover
                             variant="wide"
