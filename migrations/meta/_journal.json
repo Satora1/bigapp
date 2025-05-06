@@ -43,6 +43,13 @@
       "when": 1746448042003,
       "tag": "0005_wonderful_forge",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1746519305415,
+      "tag": "0006_burly_frank_castle",
+      "breakpoints": true
     }
   ]
 }

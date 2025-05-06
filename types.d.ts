@@ -20,9 +20,7 @@ interface AuthCredentials{
   fullName:string
   email:string
   password:string
-  universityId:number
   vintedNickname:string
-  universityCard:string
 }
 
 interface BookParamas{
