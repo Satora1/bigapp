@@ -27,10 +27,8 @@ export const users = pgTable("users", {
   id: uuid("id").notNull().primaryKey().defaultRandom().unique(),
   fullName: varchar("full_name", { length: 255 }).notNull(),
   email: text("email").notNull().unique(),
-
   vintedNickname: varchar("vinted_nickname", { length: 255 }).notNull(),
   password: text("password").notNull(),
-
   status: STATUS_ENUM("status").default("PENDING"),
   role: ROLE_ENUM("role").default("USER"),
   lastActivityDate: date("last_activity_date").defaultNow(),
@@ -54,11 +52,18 @@ export const books = pgTable("books", {
   availableCopies: integer("available_copies").notNull().default(0),
   videoUrl: text("video_url").notNull(),
   summary: text("summary").notNull(),
-  vintedLink:text("vinted_link").notNull(),
+  vintedLink: text("vinted_link").notNull(),
   createdAt: timestamp("created_at", { withTimezone: true }).defaultNow(),
 
 })
 
+export const favorites = pgTable("favorites", {
+  id: uuid("id").notNull().primaryKey().defaultRandom().unique(),
+  userId: uuid("user_id")
+    .references(() => users.id)
+    .notNull(),
+  bookId: uuid("book_id")
+})
 
 export const borrowRecords = pgTable("borrow_records", {
   id: uuid("id").notNull().primaryKey().defaultRandom().unique(),

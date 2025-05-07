@@ -23,6 +23,12 @@ interface AuthCredentials{
   vintedNickname:string
 }
 
+interface Favorites{
+  id:string
+  userId:string
+  bookId:string
+}
+
 interface BookParamas{
   title:string;
   author:string;

@@ -8,6 +8,8 @@ import { books, users } from '@/database/schema'
 import Link from 'next/link'
 import placeOrder from './PlaceOrder'
 import PlaceOrder from './PlaceOrder'
+import Favorites from './Favorites'
+import addFavorite from '@/lib/actions/addFavorite'
 interface Props extends Book {
     userId: string
 }
@@ -74,13 +76,14 @@ const BookOverview = async ({ id, userId, title, author, genre, rating, totalCop
                 {/* <BorrowBook bookId={id} userId={userId} borrowingEligibility={borrowingEligibility}  /> */}
                 <ul className='flex flex-row gap-5'>
                     <p>
-                        < Button asChild>
+                        < Button asChild className="h-20 w-40 px-12">
                             <Link href={vintedLink} target="_blank" rel="noopener noreferrer">
-                                Offer Link
+                                 Link to Offer
                             </Link>
                         </Button>
                     </p>
                     <p >
+<Favorites bookId={id} userId={user.id} />
 
                         {/* <PlaceOrder id={id} /> */}
                     </p>
