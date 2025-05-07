@@ -5,57 +5,8 @@
     {
       "idx": 0,
       "version": "7",
-      "when": 1743086430372,
-      "tag": "0000_futuristic_zarda",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "7",
-      "when": 1745502036398,
-      "tag": "0001_chief_warlock",
-      "breakpoints": true
-    },
-    {
-      "idx": 2,
-      "version": "7",
-      "when": 1746005456269,
-      "tag": "0002_tranquil_fallen_one",
-      "breakpoints": true
-    },
-    {
-      "idx": 3,
-      "version": "7",
-      "when": 1746190291491,
-      "tag": "0003_tired_blazing_skull",
-      "breakpoints": true
-    },
-    {
-      "idx": 4,
-      "version": "7",
-      "when": 1746437817727,
-      "tag": "0004_chemical_lilandra",
-      "breakpoints": true
-    },
-    {
-      "idx": 5,
-      "version": "7",
-      "when": 1746448042003,
-      "tag": "0005_wonderful_forge",
-      "breakpoints": true
-    },
-    {
-      "idx": 6,
-      "version": "7",
-      "when": 1746519305415,
-      "tag": "0006_burly_frank_castle",
-      "breakpoints": true
-    },
-    {
-      "idx": 7,
-      "version": "7",
-      "when": 1746614860886,
-      "tag": "0007_easy_wonder_man",
+      "when": 1746628442432,
+      "tag": "0000_illegal_joshua_kane",
       "breakpoints": true
     }
   ]

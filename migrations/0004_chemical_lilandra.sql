@@ -1,1 +1,0 @@
-ALTER TABLE "books" ADD COLUMN "cover_url2" text NOT NULL;

@@ -1,1 +1,0 @@
-ALTER TABLE "users" ADD COLUMN "vinted_nickname" varchar(255) NOT NULL;

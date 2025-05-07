@@ -40,7 +40,7 @@ export const users = pgTable("users", {
 
 export const books = pgTable("books", {
   id: uuid("id").notNull().primaryKey().defaultRandom().unique(),
-  title: varchar("title", { length: 100 }).notNull(),
+    title: varchar("title", { length: 100 }).notNull(),
   author: varchar("author", { length: 100 }).notNull(),
   genre: varchar("genre", { length: 50 }).notNull(),
   rating: integer("rating"),
@@ -48,7 +48,7 @@ export const books = pgTable("books", {
   coverUrl2: text("cover_url2").notNull(),
   coverColor: varchar("cover_color", { length: 7 }).notNull(),
   description: text("description").notNull(),
-  totalCopies: integer("totla_copies").notNull().default(0),
+  totalCopies: integer("total_copies").notNull().default(0),
   availableCopies: integer("available_copies").notNull().default(0),
   videoUrl: text("video_url").notNull(),
   summary: text("summary").notNull(),
@@ -62,7 +62,8 @@ export const favorites = pgTable("favorites", {
   userId: uuid("user_id")
     .references(() => users.id)
     .notNull(),
-  bookId: uuid("book_id")
+    bookId: uuid("book_id").references(() => books.id).notNull(),
+  coverUrl: text("cover_url").notNull(),
 })
 
 export const borrowRecords = pgTable("borrow_records", {

@@ -83,7 +83,7 @@ const BookOverview = async ({ id, userId, title, author, genre, rating, totalCop
                         </Button>
                     </p>
                     <p >
-<Favorites bookId={id} userId={user.id} />
+<Favorites bookId={id} userId={user.id} coverUrl={coverUrl} />
 
                         {/* <PlaceOrder id={id} /> */}
                     </p>

@@ -7,14 +7,15 @@ import { Button } from './ui/button';
 interface FavoritesProps {
   userId: string;
   bookId: string;
+  coverUrl: string;
 }
 
-const Favorites: React.FC<FavoritesProps> = ({ userId, bookId }) => {
+const Favorites: React.FC<FavoritesProps> = ({ userId, bookId ,coverUrl}) => {
   const [isFavorite, setIsFavorite] = useState(false); 
 
   const handleAddFavorite = async () => {
     try {
-      await addFavorite({ userId, bookId });
+      await addFavorite({ userId, bookId,coverUrl });
       setIsFavorite(true); 
     } catch (error) {
       console.error("Error adding to favorites:", error);
