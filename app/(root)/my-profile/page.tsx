@@ -6,9 +6,10 @@ import { sampleBooks } from "@/constants";
 import { db } from "@/database/drizzle";
 import { books, favorites, users } from "@/database/schema";
 import { eq } from "drizzle-orm";
+import RemoveFavorites from "@/components/RemoveFavorites";
 
 const Page = async () => {
-  const session = await auth(); 
+  const session = await auth();
   if (!session?.user) return <p className="text-white">You must be signed in.</p>;
   const favs = await db
     .select({
@@ -21,25 +22,28 @@ const Page = async () => {
     .innerJoin(books, eq(favorites.bookId, books.id))
     .where(eq(favorites.userId, session.user.id));
 
-    return (
-      <div className="min-h-screen flex flex-col px-4">
-        <form
-          action={async () => {
-            "use server";
-            await signOut();
-          }}
-          className="mb-10"
-        >
-          <Button>Logout</Button>
-        </form>
-    
-        <BookList title="Your Favorites" books={favs} />
-    
-        <div className="text-xl mt-10">
-          <h2 className="text-white">Satora.shop ®</h2>
-        </div>
+
+
+  return (
+    <div className="min-h-screen flex flex-col px-4">
+      <form
+        action={async () => {
+          "use server";
+          await signOut();
+        }}
+        className="mb-10"
+      >
+        <Button>Logout</Button>
+      </form>
+
+      <BookList title="Your Favorites" books={favs} />
+      <RemoveFavorites id={favorites.id} />
+
+      <div className="text-xl mt-10">
+        <h2 className="text-white">Satora.shop ®</h2>
       </div>
-    );
-    
+    </div>
+  );
+
 };
 export default Page;
