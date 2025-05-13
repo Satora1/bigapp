@@ -37,7 +37,7 @@ const Page = async () => {
       </form>
 
       <BookList title="Your Favorites" books={favs} />
-      <RemoveFavorites id={favorites.id} />
+     
 
       <div className="text-xl mt-10">
         <h2 className="text-white">Satora.shop ®</h2>

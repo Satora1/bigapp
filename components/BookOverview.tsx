@@ -4,14 +4,16 @@ import { Button } from './ui/button'
 import BookCover from './BookCover'
 import { db } from '@/database/drizzle'
 import { eq, is } from 'drizzle-orm'
-import { books, users } from '@/database/schema'
+import { books, favorites, users } from '@/database/schema'
 import Link from 'next/link'
 import placeOrder from './PlaceOrder'
 import PlaceOrder from './PlaceOrder'
 import Favorites from './Favorites'
 import addFavorite from '@/lib/actions/addFavorite'
+import RemoveFavorites from './RemoveFavorites'
 interface Props extends Book {
     userId: string
+    favoriteId: string
 }
 const BookOverview = async ({ id, userId, title, author, genre, rating, totalCopies, availableCopies, description, coverColor, coverUrl, vintedLink, coverUrl2 }: Props) => {
 
@@ -25,6 +27,14 @@ const BookOverview = async ({ id, userId, title, author, genre, rating, totalCop
         .where(eq(users.id, userId))
         .limit(1)
     if (!user) return null
+
+    const [favorite] = await db
+  .select()
+  .from(favorites)
+  .where(eq(favorites.userId, user.id))
+  .where(eq(favorites.bookId, id))
+  .limit(1);
+  
     const borrowingEligibility = {
         isEligible: availableCopies > 0 && user.status === "APPROVED",
         message: availableCopies <= 0 ? "Book is not available" :
@@ -82,11 +92,13 @@ const BookOverview = async ({ id, userId, title, author, genre, rating, totalCop
                             </Link>
                         </Button>
                     </p>
-                    <p >
-<Favorites bookId={id} userId={user.id} coverUrl={coverUrl} />
-
-                        {/* <PlaceOrder id={id} /> */}
-                    </p>
+ <p>
+  {favorite ? (
+    <RemoveFavorites userId={user.id} bookId={id} />
+  ) : (
+    <Favorites userId={user.id} bookId={id} coverUrl={coverUrl} />
+  )}
+</p>
                 </ul>
             </div>
             <div className='relative flex flex-1 justify-center '>
