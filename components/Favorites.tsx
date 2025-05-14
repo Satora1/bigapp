@@ -33,14 +33,19 @@ const Favorites: React.FC<FavoritesProps> = ({ userId, bookId, coverUrl }) => {
       className="cursor-pointer h-20 w-25 "
       disabled={isFavorite}
     >
-      <img
-        src={ "/icons/add.svg"}
-        alt=""
-        className="w-20 h-20"
-      />
-      <span className="text-base ">
-        {isFavorite ? "Already in favorites" : "Add to favorites"}
-      </span>
+      <div className='flex flex-row items-center justify-center mr-5'>
+        <span className="text-base text-xl">
+          {isFavorite ? "Already in favorites" : "Add to favorites"}
+        </span>
+        <img
+          src={"/icons/add.svg"}
+          alt=""
+          className="w-20 h-20"
+        />
+
+
+      </div>
+
     </Button>
   );
 };

@@ -86,9 +86,16 @@ const BookOverview = async ({ id, userId, title, author, genre, rating, totalCop
                 {/* <BorrowBook bookId={id} userId={userId} borrowingEligibility={borrowingEligibility}  /> */}
                 <ul className='flex flex-row gap-5'>
                     <p>
-                        < Button asChild className="h-20 w-40 px-12">
+                        < Button asChild className="h-20 w-50 px-12">
                             <Link href={vintedLink} target="_blank" rel="noopener noreferrer">
-                                 Link to Offer
+                                
+                                <div className='text-xl mr-5'>
+                                    Link to Offer
+                                    </div> 
+                                 <img
+                                    src={"/icons/receipt.svg"}
+                                    alt=""
+                                    className="w-10 h-10"/>
                             </Link>
                         </Button>
                     </p>
