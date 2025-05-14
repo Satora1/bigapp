@@ -29,11 +29,17 @@ const RemoveFavorites: React.FC<RemoveFavoritesProps> = ({ userId, bookId }) => 
     return (
         <Button
             onClick={handleRemoveFavorite}
-            className="cursor-pointer h-20 w-40 px-12"
+          className="cursor-pointer h-20 w-25 "
             disabled={isRemoved}
 
         >
-            {isRemoved ? 'Removed from favorites' : 'Remove from favorites'}
+               <img
+        src={ "/icons/remove.svg"}
+        alt=""
+        className="w-20 h-20"
+      />
+            
+            {'Remove from favorites'}
         </Button>
     )
 }
