@@ -11,8 +11,8 @@ const Header = () => {
         <Image src="/icons/logo.svg" alt="logo" width={60} height={40} />
       </Link>
 
-      <ul className="flex flex-row items-center gap-8">
-  <li className="flex flex-row gap-4">
+      <ul className="flex flex-row items-center gap-8 mr-12">
+  <li className="flex flex-row gap-10 ">
     <form
       action={async () => {
         "use server";

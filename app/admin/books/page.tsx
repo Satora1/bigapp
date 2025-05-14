@@ -1,9 +1,11 @@
 
+import ImageForAdmin from '@/components/ImageForAdmin';
 import { Button } from '@/components/ui/button'
 import { db } from '@/database/drizzle'
 import { books } from '@/database/schema'
 import config from "@/lib/config";
 import { IKImage } from "imagekitio-next";
+
 import Link from 'next/link'
 import React from 'react'
 
@@ -22,19 +24,20 @@ const Page = async () => {
                 </Button>
             </div>
             <div className='mt-7 w-full overflow-hidden'>
-                <ul> 
+                <ul>
                     {items.map((item) => (
                         <li key={item.id} className="p-4 mb-10 rounded-md bg-gray-100 text-black shadow w-[500px]">
-                            <p className='ml-2'><strong>ID:</strong> {item.id}</p>
-                       < p className='ml-2'><strong>Tytuł:</strong> {item.title}</p>-
-                            {/* { <IKImage
-                                path={item.coverUrl}
-                                urlEndpoint={config.env.imagekit.urlEndpoint}
-                                width={120}
-                                height={120}
-                                alt="Image"
-                            /> } */}
+                             <div className='flex flex-row'>
+                            <div className="ml-2 flex flex-col gap-2">
+                                <p><strong>ID:</strong> {item.id}</p>
+                                <p><strong>Tytuł:</strong> {item.title}</p>
+                            </div>
+                           
+                                <ImageForAdmin coverImage={item.coverUrl} />
+                            </div>
+                            
                         </li>
+
                     ))}
                 </ul>
             </div>

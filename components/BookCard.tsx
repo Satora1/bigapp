@@ -18,6 +18,7 @@ const BookCard = ({ id, title, genre, coverColor, coverUrl,coverUrl2, isLoanedBo
                     <p className='book-genre'>
                         {genre}
                     </p>
+                    
                 </div>
                 {isLoanedBook && (
                     <div className='mt-3 w-full'>
