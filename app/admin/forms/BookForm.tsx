@@ -41,6 +41,9 @@ const BookForm = ({ type,
             description: "",
             author: "",
             genre: "All",
+            price: 0,
+            soldPrice: 0,
+            priceBought: 0,
             rating: 1,
             totalCopies: 1,
             coverUrl: "",
@@ -180,6 +183,48 @@ const BookForm = ({ type,
                                     min={1}
                                     max={100}
                                     placeholder="Total Copies"
+                                    {...field}
+                                    className="book-form_input" />
+                            </FormControl>
+                            <FormMessage />
+                        </FormItem>
+                    )}
+                />
+                         <FormField
+                    control={form.control}
+                    name={"price"}
+                    render={({ field }) => (
+                        <FormItem className="flex flex-col gap-1">
+                            <FormLabel className="text-base font-normal text-dark-500">
+                              Price
+                            </FormLabel>
+                            <FormControl>
+                                <Input
+                                    type="number"
+                                    min={1}
+                                    max={100000}
+                                    placeholder="Price"
+                                    {...field}
+                                    className="book-form_input" />
+                            </FormControl>
+                            <FormMessage />
+                        </FormItem>
+                    )}
+                />
+                                 <FormField
+                    control={form.control}
+                    name={"priceBought"}
+                    render={({ field }) => (
+                        <FormItem className="flex flex-col gap-1">
+                            <FormLabel className="text-base font-normal text-dark-500">
+                                Price Bought
+                            </FormLabel>
+                            <FormControl>
+                                <Input
+                                    type="number"
+                                    min={1}
+                                    max={100000}
+                                    placeholder="Price"
                                     {...field}
                                     className="book-form_input" />
                             </FormControl>
