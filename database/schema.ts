@@ -1,4 +1,4 @@
-import { desc } from "drizzle-orm";
+import { desc, is } from "drizzle-orm";
 import {
   varchar,
   uuid,
@@ -10,6 +10,7 @@ import {
   char,
   pgEnum,
   timestamp,
+  boolean,
 } from "drizzle-orm/pg-core";
 import { totalmem } from "os";
 
@@ -46,6 +47,7 @@ export const books = pgTable("books", {
   genre: varchar("genre", { length: 50 }).notNull(),
   price: doublePrecision("price").notNull(),
   soldPrice: doublePrecision("sold_price").notNull().default(0),
+  isSold: boolean("is_sold"),
   priceBought: doublePrecision("price_bought").notNull().default(0),
   rating: integer("rating"),
   coverUrl: text("cover_url").notNull(),

@@ -8,6 +8,7 @@ interface Book {
   availableCopies: number
   price: number
   soldPrice: number
+  isSold: boolean
   priceBought: number
   description: string
   coverColor: string

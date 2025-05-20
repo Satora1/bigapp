@@ -19,6 +19,7 @@ export const bookSchema = z.object({
   genre: z.string().trim().min(2).max(50),
   price: z.coerce.number().min(1),
   soldPrice: z.coerce.number(),
+  isSold: z.boolean().default(false),
   priceBought: z.coerce.number().min(1),
   rating: z.coerce.number().min(1).max(5).optional(),
   totalCopies: z.coerce.number().min(1),
