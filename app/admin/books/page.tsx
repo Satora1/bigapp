@@ -3,11 +3,11 @@ import ImageForAdmin from '@/components/ImageForAdmin';
 import { Button } from '@/components/ui/button'
 import { db } from '@/database/drizzle'
 import { books } from '@/database/schema'
-import config from "@/lib/config";
-import { IKImage } from "imagekitio-next";
+
 
 import Link from 'next/link'
 import React from 'react'
+import UpdateSoldForm from '../forms/PriceForm';
 
 const Page = async () => {
     const items = await db.select().from(books).limit(10)
@@ -27,15 +27,25 @@ const Page = async () => {
                 <ul>
                     {items.map((item) => (
                         <li key={item.id} className="p-4 mb-10 rounded-md bg-gray-100 text-black shadow w-[500px]">
-                             <div className='flex flex-row'>
-                            <div className="ml-2 flex flex-col gap-2">
-                                <p><strong>ID:</strong> {item.id}</p>
-                                <p><strong>Tytuł:</strong> {item.title}</p>
-                            </div>
-                           
+                            <div className='flex flex-row'>
+                                <div className="ml-2 flex flex-col gap-2">
+                                    <p><strong>ID:</strong> {item.id}</p>
+                                    <p><strong>Tytuł:</strong> {item.title}</p>
+                                    <p><strong>Cena:</strong> {item.price} zł</p>
+                                    <p><strong>Sprzedane: </strong> {!item.isSold ? " Nie" : "Tak"}</p>
+                                    <UpdateSoldForm
+                                        bookId={item.id}
+                                        defaultValues={{
+                                            soldPrice: item.soldPrice ?? 0,
+                                            isSold: item.isSold ?? false,
+                                        }}
+                                    />
+
+                                </div>
+
                                 <ImageForAdmin coverImage={item.coverUrl} />
                             </div>
-                            
+
                         </li>
 
                     ))}
