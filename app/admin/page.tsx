@@ -39,7 +39,7 @@ const Page = async () => {
             return (
               <div
                 key={item.id}
-                className={`p-4 rounded-lg bg-white shadow border border-gray-200 ${!item.isSold ? 'bg-green-100' : 'bg-red-100'}`}
+                className={`p-4 rounded-lg bg-white shadow border border-gray-200 ${item.isSold ? "bg-green-100" : "bg-red-100"}`}
               >
                 <h3 className="text-md font-semibold mb-1">{item.title}</h3>
                 <p className="text-gray-700 mb-1">{item.description}</p>

@@ -26,7 +26,7 @@ const Page = async () => {
             <div className='mt-7 w-full overflow-hidden'>
                 <ul>
                     {items.map((item) => (
-                        <li key={item.id} className="p-4 mb-10 rounded-md bg-gray-100 text-black shadow w-[500px]">
+                        <li key={item.id} className={`p-4 mb-10 rounded-md bg-gray-100 text-black shadow w-[500px] ${item.isSold ? "bg-green-100" : "bg-red-100"}`}>
                             <div className='flex flex-row'>
                                 <div className="ml-2 flex flex-col gap-2">
                                     <p><strong>ID:</strong> {item.id}</p>
