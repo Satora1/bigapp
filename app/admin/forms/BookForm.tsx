@@ -81,7 +81,7 @@ const BookForm = ({ type,
                     render={({ field }) => (
                         <FormItem className="flex flex-col gap-1">
                             <FormLabel className="text-base font-normal text-dark-500">
-                               Title                        </FormLabel>
+                                Title                        </FormLabel>
                             <FormControl>
 
                                 <Input required
@@ -93,13 +93,13 @@ const BookForm = ({ type,
                         </FormItem>
                     )}
                 />
-                 <FormField
+                <FormField
                     control={form.control}
                     name={"vintedLink"}
                     render={({ field }) => (
                         <FormItem className="flex flex-col gap-1">
                             <FormLabel className="text-base font-normal text-dark-500">
-                               Vinted Link                        </FormLabel>
+                                Vinted Link                        </FormLabel>
                             <FormControl>
 
                                 <Input required
@@ -191,13 +191,13 @@ const BookForm = ({ type,
                         </FormItem>
                     )}
                 />
-                         <FormField
+                <FormField
                     control={form.control}
                     name={"price"}
                     render={({ field }) => (
                         <FormItem className="flex flex-col gap-1">
                             <FormLabel className="text-base font-normal text-dark-500">
-                              Price
+                                Price
                             </FormLabel>
                             <FormControl>
                                 <Input
@@ -205,6 +205,7 @@ const BookForm = ({ type,
                                     min={1}
                                     max={100000}
                                     placeholder="Price"
+                                    step={0.01}
                                     {...field}
                                     className="book-form_input" />
                             </FormControl>
@@ -212,7 +213,7 @@ const BookForm = ({ type,
                         </FormItem>
                     )}
                 />
-                                 <FormField
+                <FormField
                     control={form.control}
                     name={"priceBought"}
                     render={({ field }) => (
@@ -225,6 +226,7 @@ const BookForm = ({ type,
                                     type="number"
                                     min={1}
                                     max={100000}
+                                    step={0.01}
                                     placeholder="Price"
                                     {...field}
                                     className="book-form_input" />
@@ -256,14 +258,14 @@ const BookForm = ({ type,
                         </FormItem>
                     )}
                 />
-                      <FormField
+                <FormField
                     control={form.control}
                     name={"coverUrl2"}
                     render={({ field }) => (
                         <FormItem className="flex flex-col gap-1">
                             <FormLabel className="text-base font-normal text-dark-500">
-                                 Image 2
-                            </FormLabel> 
+                                Image 2
+                            </FormLabel>
                             <FormControl>
                                 <FileUpload
                                     type="image"
@@ -279,7 +281,7 @@ const BookForm = ({ type,
                         </FormItem>
                     )}
                 />
-                
+
                 <FormField
                     control={form.control}
                     name={"coverColor"}

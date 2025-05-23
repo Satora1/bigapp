@@ -62,9 +62,10 @@ const UpdateSoldForm = ({ bookId, defaultValues }: Props) => {
             <FormItem>
               <FormLabel>Cena sprzedaży (zł)</FormLabel>
               <FormControl>
-                <Input
+                <Input className="w-40 bg-white "
                   type="number"
                   step="0.01"
+                  placeholder=" "
                   {...field}
                   onChange={(e) => field.onChange(Number(e.target.value))}
                 />
@@ -78,7 +79,7 @@ const UpdateSoldForm = ({ bookId, defaultValues }: Props) => {
           control={form.control}
           name="isSold"
           render={({ field }) => (
-            <FormItem className="flex items-center gap-3 space-y-0">
+            <FormItem className="flex items-center gap-3 space-y-0 bg-white w-full p-4 rounded-md shadow-sm w-40 ">
               <FormControl>
                 <Checkbox
                   id="isSold"

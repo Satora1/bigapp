@@ -32,7 +32,7 @@ const Page = async () => {
                                     <p><strong>ID:</strong> {item.id}</p>
                                     <p><strong>Tytuł:</strong> {item.title}</p>
                                     <p><strong>Cena:</strong> {item.price} zł</p>
-                                    <p><strong>Sprzedane: </strong> {!item.isSold ? " Nie" : "Tak"}</p>
+                                    <p><strong>Sprzedane: </strong> {!item.isSold ? " Tak" : "Nie"}</p>
                                     <UpdateSoldForm
                                         bookId={item.id}
                                         defaultValues={{
