@@ -14,9 +14,9 @@ const ImageForAdmin = ({ coverImage = "https://placehold.co/600x600.png",
          path={coverImage}
           urlEndpoint={config.env.imagekit.urlEndpoint}
           alt="Book cover"
-          width={120}
-          height={120}
-          className="rounded-md object-fill"
+          width={300}
+          height={300}
+          className="rounded-md object-fill "
         />
     )
 }
