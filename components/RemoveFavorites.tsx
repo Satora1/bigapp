@@ -32,11 +32,11 @@ const RemoveFavorites: React.FC<RemoveFavoritesProps> = ({ userId, bookId }) => 
             className="cursor-pointer h-20 w-25 "
             disabled={isRemoved}
 
-        ><div className='flex flex-row items-center justify-center mr-5 text-xl'>
+        ><div className='flex flex-row items-center justify-center ml-3 text-xl'>
                 {'Remove from favorites'}
 
                 <img
-                    src={"/icons/remove.svg"}
+                    src={"/icons/add.svg"}
                     alt=""
                     className="w-20 h-20"
                 />

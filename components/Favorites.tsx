@@ -38,7 +38,7 @@ const Favorites: React.FC<FavoritesProps> = ({ userId, bookId, coverUrl }) => {
           {isFavorite ? "Already in favorites" : "Add to favorites"}
         </span>
         <img
-          src={"/icons/add.svg"}
+          src={"/icons/remove.svg"}
           alt=""
           className="w-20 h-20"
         />

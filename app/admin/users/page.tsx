@@ -12,11 +12,12 @@ const Users = async () => {
                 {data.map((user) => (
                     <li
                         key={user.id}
-                        className="p-4 rounded-md bg-gray-100 text-black shadow w-[500px]"
+                        className="p-4 rounded-md bg-gray-100 text-black shadow w-[400px]"
                     >
                         <p className='ml-2'><strong>ID:</strong> {user.id}</p>
                         <p className='ml-2'><strong>Name:</strong> {user.fullName}</p>
                         <p className='ml-2'><strong>Email:</strong> {user.email}</p>
+                        <p className='ml-2'><strong>Vinted Nickname:</strong> {user.vintedNickname}</p>
                         <p
                             className={` p-2 rounded-md text-white  ${user.status?.toLowerCase() === 'approved'
                                     ? 'bg-green-500'
