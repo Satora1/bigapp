@@ -15,7 +15,7 @@ interface Props extends Book {
     userId: string
     favoriteId: string
 }
-const BookOverview = async ({ id, userId, title, author, genre, rating, totalCopies, availableCopies, description, coverColor, coverUrl, vintedLink, coverUrl2 }: Props) => {
+const BookOverview = async ({ id, userId, title, author, genre, rating, totalCopies, availableCopies, description, coverColor, coverUrl, vintedLink, coverUrl2, isSold }: Props) => {
 
 
 
@@ -29,12 +29,12 @@ const BookOverview = async ({ id, userId, title, author, genre, rating, totalCop
     if (!user) return null
 
     const [favorite] = await db
-  .select()
-  .from(favorites)
-  .where(eq(favorites.userId, user.id))
-  .where(eq(favorites.bookId, id))
-  .limit(1);
-  
+        .select()
+        .from(favorites)
+        .where(eq(favorites.userId, user.id))
+        .where(eq(favorites.bookId, id))
+        .limit(1);
+
     const borrowingEligibility = {
         isEligible: availableCopies > 0 && user.status === "APPROVED",
         message: availableCopies <= 0 ? "Book is not available" :
@@ -69,11 +69,19 @@ const BookOverview = async ({ id, userId, title, author, genre, rating, totalCop
                 </div>
                 <div className='book-copies'>
                     <p>
-                        Available Items: <span>
+                        Items: <span>
 
                             {totalCopies}
                         </span>
                     </p>
+        <p className="flex items-center gap-2">
+  Availability:
+  {!isSold ? (
+    <img src="/icons/tick.svg" alt="available" className="w-8 h-8" />
+  ) : (
+    <img src="/icons/warning.svg" alt="sold" className="w-8 h-8" />
+  )}
+</p>
                     {/* <p>
                         Available Items: <span>
                             {availableCopies}
@@ -88,24 +96,24 @@ const BookOverview = async ({ id, userId, title, author, genre, rating, totalCop
                     <p>
                         < Button asChild className="h-20 w-50 px-12">
                             <Link href={vintedLink} target="_blank" rel="noopener noreferrer">
-                                
+
                                 <div className='text-xl mr-5'>
                                     Link to Offer
-                                    </div> 
-                                 <img
+                                </div>
+                                <img
                                     src={"/icons/receipt.svg"}
                                     alt=""
-                                    className="w-10 h-10"/>
+                                    className="w-10 h-10" />
                             </Link>
                         </Button>
                     </p>
- <p>
-  {favorite ? (
-    <RemoveFavorites userId={user.id} bookId={id} />
-  ) : (
-    <Favorites userId={user.id} bookId={id} coverUrl={coverUrl} />
-  )}
-</p>
+                    <p>
+                        {favorite ? (
+                            <RemoveFavorites userId={user.id} bookId={id} />
+                        ) : (
+                            <Favorites userId={user.id} bookId={id} coverUrl={coverUrl} />
+                        )}
+                    </p>
                 </ul>
             </div>
             <div className='relative flex flex-1 justify-center '>
