@@ -3,13 +3,11 @@ import React from 'react'
 import { Button } from './ui/button'
 import BookCover from './BookCover'
 import { db } from '@/database/drizzle'
-import { eq, is } from 'drizzle-orm'
-import { books, favorites, users } from '@/database/schema'
+import { eq } from 'drizzle-orm'
+import { favorites, users } from '@/database/schema'
 import Link from 'next/link'
-import placeOrder from './PlaceOrder'
-import PlaceOrder from './PlaceOrder'
+
 import Favorites from './Favorites'
-import addFavorite from '@/lib/actions/addFavorite'
 import RemoveFavorites from './RemoveFavorites'
 interface Props extends Book {
     userId: string

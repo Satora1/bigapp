@@ -2,7 +2,6 @@
 
 import React, { useState } from 'react'
 import { Button } from './ui/button'
-import removeFromFavorites from '@/lib/actions/removeFromFav'
 
 interface RemoveFavoritesProps {
     userId: string

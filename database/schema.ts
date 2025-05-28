@@ -1,4 +1,3 @@
-import { desc, is } from "drizzle-orm";
 import {
   varchar,
   uuid,
@@ -12,7 +11,6 @@ import {
   timestamp,
   boolean,
 } from "drizzle-orm/pg-core";
-import { totalmem } from "os";
 
 export const STATUS_ENUM = pgEnum("status", [
   "PENDING",
