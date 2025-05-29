@@ -2,11 +2,9 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import { auth, signOut } from "@/auth";
 import BookList from "@/components/BookList";
-import { sampleBooks } from "@/constants";
 import { db } from "@/database/drizzle";
 import { books, favorites, users } from "@/database/schema";
 import { eq } from "drizzle-orm";
-import RemoveFavorites from "@/components/RemoveFavorites";
 
 const Page = async () => {
   const session = await auth();
