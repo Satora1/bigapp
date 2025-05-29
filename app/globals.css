@@ -5,10 +5,11 @@
 @layer base {
   :root {
     --radius: 0.5rem;
-    
+
   }
 
-  html, body {
+  html,
+  body {
     overflow-x: hidden;
   }
 
@@ -230,7 +231,7 @@
   }
 }
 
-@layer utilities {  
+@layer utilities {
   .gradient-vertical {
     background: linear-gradient(180deg, #764b36 0%, #12151f 100%);
   }
@@ -316,6 +317,7 @@
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
   }
+
   .dark {
     --background: 222.2 84% 4.9%;
     --foreground: 210 40% 98%;
@@ -342,26 +344,28 @@
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
   }
+
   /* my app styles */
   .card {
-    width: 500px;
-    height: 500px;
-    background: rgb(216, 128, 45);
-    transition: all 0.5s;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px 5px  rgba(0, 0, 0, 0.705);
-    font-size: 30px;
-    font-weight: 900;
-  }
-  
+  width: 100%;
+  max-width: 400px;
+  height: 400px;
+  background: rgb(216, 128, 45);
+  transition: all 0.5s;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.705);
+  font-size: 30px;
+  font-weight: 900;
+}
+
   .card:hover {
     border-radius: 15px;
     cursor: pointer;
     transform: scale(1);
-    box-shadow: 0px 0px 10px 5px  rgba(0, 0, 0, 0.705);
+    box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.705);
     background: rgb(216, 128, 45);
   }
-  
+
   .first-content {
     pointer-events: auto;
     height: 100%;
@@ -373,13 +377,13 @@
     opacity: 1;
     border-radius: 15px;
   }
-  
+
   .card:hover .first-content {
     pointer-events: none;
     height: 0px;
     opacity: 0;
   }
-  
+
   .second-content {
     pointer-events: none;
     height: 0%;
@@ -393,7 +397,7 @@
     font-size: 0px;
     transform: rotate(90deg) scale(-1);
   }
-  
+
   .card:hover .second-content {
     pointer-events: none;
     opacity: 1;

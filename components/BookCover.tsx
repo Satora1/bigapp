@@ -37,8 +37,8 @@ const BookCoverFlip = ({
           path={coverImage}
           urlEndpoint={config.env.imagekit.urlEndpoint}
           alt="Book cover"
-          width={600}
-          height={600}
+          width={450}
+          height={450}
           className="rounded-md object-fill"
         />
       </div>
@@ -47,8 +47,8 @@ const BookCoverFlip = ({
           path={coverImage2}
           urlEndpoint={config.env.imagekit.urlEndpoint}
           alt="Book cover"
-          width={600}
-          height={600}
+          width={450}
+          height={450}
           className="rounded-md object-fill"
         />
       </div>
