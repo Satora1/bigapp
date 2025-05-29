@@ -1,13 +1,22 @@
-"use client"
+import { db } from "@/database/drizzle";
+import { users } from "@/database/schema";
+import { eq } from "drizzle-orm";
+import { Button } from "../ui/button";
+import { auth } from "@/auth";
+import Link from "next/dist/client/link";
 
-import { Button } from '../ui/button';
-import Link from 'next/link';
+const AdminButton = async () => {
+const session = await auth(); 
+ const email = session?.user?.email;
 
-interface AdminButtonProps {
-  isAdmin: boolean;
-}
+  if (!email) return null;
 
-const AdminButton = ({ isAdmin }: AdminButtonProps) => {
+  const [user] = await db
+    .select()
+    .from(users)
+    .where(eq(users.email, email));
+
+  const isAdmin = user?.role === "ADMIN";
   if (!isAdmin) return null;
 
   return (
@@ -20,3 +29,4 @@ const AdminButton = ({ isAdmin }: AdminButtonProps) => {
 };
 
 export default AdminButton;
+

@@ -4,8 +4,6 @@ import { signOut } from "@/auth";
 import { Button } from "@/components/ui/button";
 import { redirect } from "next/navigation";
 import AdminButton from "./admin/AdminButtonComponent";
-import { is } from "drizzle-orm";
-import AdminButtonWrapper from "./admin/AdminButton";
 
 
 const Header = async () => {
@@ -40,7 +38,7 @@ const Header = async () => {
             </Button>
           </form>
 
-          <AdminButtonWrapper />
+          <AdminButton />
         </li>
       </ul>
     </header>
