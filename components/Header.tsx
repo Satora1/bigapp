@@ -3,7 +3,7 @@ import Image from "next/image";
 import { signOut } from "@/auth";
 import { Button } from "@/components/ui/button";
 import { redirect } from "next/navigation";
-import AdminButton from "./admin/AdminButtonComponent";
+import AdminButton from "./admin/SearchComponents/AdminButtonComponent";
 
 
 const Header = async () => {

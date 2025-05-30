@@ -1,7 +1,7 @@
 import { db } from "@/database/drizzle";
 import { users } from "@/database/schema";
 import { eq } from "drizzle-orm";
-import { Button } from "../ui/button";
+import { Button } from "../../ui/button";
 import { auth } from "@/auth";
 import Link from "next/link";
 
