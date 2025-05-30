@@ -3,19 +3,20 @@ import { adminSideBarLinks } from '@/constants'
 import { cn, getInitials } from '@/lib/utils'
 import Image from 'next/image'
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import { redirect, usePathname } from 'next/navigation'
 import path from 'path'
 import React from 'react'
 import { Avatar, AvatarFallback } from '../ui/avatar'
 import { Session } from 'next-auth'
 
-const Sidebar = ({ session }: { session: Session  }) => {
+const Sidebar = ({ session }: { session: Session }) => {
   const pathname = usePathname()
   return (
     <div className='admin-sidebar'>
       <div>
         <div className='logo'>
-          <Image src="/icons/logo.svg" alt="logo" height={50} width={50}  className='ml-2'/>
+          <Image src="/icons/logo.svg" alt="logo" width={60} height={60} onClick={() => redirect("/")} className="cursor-pointer" />
+
           <h1 className='ml-7'>
             Shop
           </h1>
@@ -51,14 +52,14 @@ const Sidebar = ({ session }: { session: Session  }) => {
           </AvatarFallback>
         </Avatar>
         <div className='flex flex-col max-md:hidden'>
-<p className='font-semibold text-dark-200'>
-  {session?.user?.name}
+          <p className='font-semibold text-dark-200'>
+            {session?.user?.name}
 
-</p>
-<p className='text-xs text-light-500'>
-  {session?.user?.email}
-  
-</p>
+          </p>
+          <p className='text-xs text-light-500'>
+            {session?.user?.email}
+
+          </p>
         </div>
       </div>
     </div >

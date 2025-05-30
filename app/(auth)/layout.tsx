@@ -2,6 +2,7 @@ import { ReactNode } from "react";
 import Image from "next/image";
 import { auth } from "@/auth";
 import { redirect } from "next/navigation";
+import { Link } from "lucide-react";
 
 const Layout = async ({ children }: { children: ReactNode }) => {
   const session = await auth();
@@ -13,7 +14,7 @@ const Layout = async ({ children }: { children: ReactNode }) => {
       <section className="auth-form">
         <div className="auth-box">
           <div className="flex flex-row gap-3">
-            <Image src="/icons/logo.svg" alt="logo" width={60} height={60} />
+            <Image src="/icons/logo.svg" alt="logo" width={60} height={60} onClick={() => redirect("/")} className="cursor-pointer" />
             <h1 className="text-2xl font-semibold text-white">Shop</h1>
           </div>
 
