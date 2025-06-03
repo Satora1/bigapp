@@ -2,7 +2,6 @@ import { ReactNode } from "react";
 import Image from "next/image";
 import { auth } from "@/auth";
 import { redirect } from "next/navigation";
-import { Link } from "lucide-react";
 
 const Layout = async ({ children }: { children: ReactNode }) => {
   const session = await auth();

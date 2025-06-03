@@ -5,7 +5,7 @@ import React from 'react'
 const Page = async () => {
   const items = await db.select().from(books)
 
-  const totalBoughtPrice = items.filter(item => !item.isSold).reduce((sum, item) => sum + (item.priceBought || 0), 0)
+  const totalBoughtPrice = items.filter(item => !item.isSold).reduce((sum, item) => sum + ((item.price || 0) * (item.totalCopies)), 0)
 
   const priceNotSoldItems = items.filter(item => !item.isSold).reduce((sum, item) => sum + (item.price || 0), 0)
 
