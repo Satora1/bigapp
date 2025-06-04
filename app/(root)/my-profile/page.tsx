@@ -31,7 +31,6 @@ const Page = async () => {
         }}
         className="mb-10"
       >
-        <Button>Logout</Button>
       </form>
 
       <BookList title="Your Favorites" books={favs} />

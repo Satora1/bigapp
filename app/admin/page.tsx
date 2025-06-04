@@ -54,8 +54,13 @@ const Page = async () => {
           {items.map((item) => {
             const bought = Number(item.priceBought || 0) * Number(item.totalCopies || 0)
             const sold = Number(item.soldPrice || 0) * Number(item.totalCopies || 0)
-            const profit = sold - bought
-
+            let profit = sold - bought
+if(profit<0){
+  profit = 0
+}
+else{
+  profit = profit
+}
             return (
               <div
                 key={item.id}
@@ -69,7 +74,7 @@ const Page = async () => {
                 <p className="text-gray-700">
                   💸 Cena sprzedaży: <span className="font-semibold">{sold.toFixed(2)} zł</span>
                 </p>
-                <p className={`text-sm font-bold mt-1 ${profit >= 0 ? 'text-green-600' : 'text-red-600'}`}>
+                <p className={`text-sm font-bold mt-1 ${profit > 0 ? 'text-green-600' : 'text-red-600'}`}>
                   Zysk: {profit.toFixed(2)} zł
                 </p>
                 <p className="text-sm text-gray-600 mt-1">

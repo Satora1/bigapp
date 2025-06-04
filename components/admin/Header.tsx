@@ -12,9 +12,6 @@ const Header = ({ session }: { session: Session }) => {
                     Monitor all of your users items
                 </p>
             </div>
-            <p>
-                Search
-            </p>
         </header>
     )
 }
