@@ -73,7 +73,7 @@ const UpdateSoldForm = ({ bookId, defaultValues }: Props) => {
               <FormMessage />
             </FormItem>
           )}
-        />
+        />   
 
         <FormField
           control={form.control}

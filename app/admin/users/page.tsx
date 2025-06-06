@@ -1,6 +1,7 @@
 import { db } from '@/database/drizzle';
 import { users } from '@/database/schema';
 import React from 'react';
+import UserStatusForm from '../forms/UserStatusForm';
 
 const Users = async () => {
     const data = await db.select().from(users).limit(10);
@@ -20,16 +21,20 @@ const Users = async () => {
                         <p className='ml-2'><strong>Vinted Nickname:</strong> {user.vintedNickname}</p>
                         <p
                             className={` p-2 rounded-md text-white  ${user.status?.toLowerCase() === 'approved'
-                                    ? 'bg-green-500'
-                                    : user.status?.toLowerCase() === 'pending'
-                                        ? 'bg-yellow-500'
-                                        : user.status?.toLowerCase() === 'rejected'
-                                            ? 'bg-red-500'
-                                            : 'bg-gray-500' // default background color for other status values
+                                ? 'bg-green-500'
+                                : user.status?.toLowerCase() === 'pending'
+                                    ? 'bg-yellow-500'
+                                    : user.status?.toLowerCase() === 'rejected'
+                                        ? 'bg-red-500'
+                                        : 'bg-gray-500' // default background color for other status values
                                 }`}
                         >
                             <strong>Status:</strong> {user.status}
                         </p>
+                        <UserStatusForm
+                            userId={user.id}
+                            defaultValues={{ status: user.status ?? '', role: user.role ?? '' }}
+                        />
                         <p className='ml-2'><strong>Staus:</strong> {user.role}</p>
                     </li>
                 ))}
