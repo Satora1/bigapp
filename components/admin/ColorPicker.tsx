@@ -1,5 +1,4 @@
 
-import { useState } from "react"
 import { HexColorPicker, HexColorInput } from "react-colorful"
 
 interface Props {

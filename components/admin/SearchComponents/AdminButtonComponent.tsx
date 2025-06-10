@@ -5,7 +5,6 @@ import { eq } from "drizzle-orm";
 import { Button } from "../../ui/button";
 import { auth } from "@/auth";
 import Link from "next/link";
-import { redirect } from "next/navigation";
 
 
 const AdminButton = async () => {
