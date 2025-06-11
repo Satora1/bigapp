@@ -5,36 +5,8 @@
     {
       "idx": 0,
       "version": "7",
-      "when": 1746628442432,
-      "tag": "0000_illegal_joshua_kane",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "7",
-      "when": 1747651314937,
-      "tag": "0001_wise_bulldozer",
-      "breakpoints": true
-    },
-    {
-      "idx": 2,
-      "version": "7",
-      "when": 1747651758895,
-      "tag": "0002_little_colleen_wing",
-      "breakpoints": true
-    },
-    {
-      "idx": 3,
-      "version": "7",
-      "when": 1747652073413,
-      "tag": "0003_pink_the_captain",
-      "breakpoints": true
-    },
-    {
-      "idx": 4,
-      "version": "7",
-      "when": 1747742810881,
-      "tag": "0004_hot_george_stacy",
+      "when": 1749647069028,
+      "tag": "0000_brief_professor_monster",
       "breakpoints": true
     }
   ]

@@ -1,1 +1,0 @@
-ALTER TABLE "books" ADD COLUMN "price_bought" double precision DEFAULT 0 NOT NULL;

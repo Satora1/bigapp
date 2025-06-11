@@ -33,6 +33,14 @@ interface Favorites {
   bookId: string
 }
 
+interface BuyRequest{
+  id:string
+  userId:string
+  bookId:string
+  vintedNickname: string
+  coverUrl: string
+}
+
 interface BookParamas {
   title: string;
   author: string;
