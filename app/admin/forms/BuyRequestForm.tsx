@@ -35,7 +35,7 @@ const Buy: React.FC<BuyProps> = ({ userId, bookId, coverUrl,vintedNickname }) =>
       disabled={isFavorite}
     >
       <div className='flex flex-row items-center justify-center mr-5'>
-        <span className="text-base text-xl">
+        <span className="items-center text-base text-xl  ">
           {isFavorite ? "Already requested" : "Buy request"}
         </span>
   
