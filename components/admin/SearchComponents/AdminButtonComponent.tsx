@@ -23,17 +23,15 @@ const AdminButton = async () => {
     if (!isAdmin) return null;
 
     return (
-        <form>
-            <Button className="h-20 w-40"  >
-                <Link href="/admin">
-                    <h2 className="text-xl bold"
-                    >
+        <Button className="h-20 w-40"  >
+            <Link href="/admin">
+                <h2 className="text-xl bold"
+                >
 
-                        Admin </h2>
-                </Link>
+                    Admin </h2>
+            </Link>
 
-            </Button>
-        </form>
+        </Button>
     );
 };
 
