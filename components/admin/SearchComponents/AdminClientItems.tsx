@@ -32,14 +32,14 @@ const AdminBooksClient = ({ items }: AdminBooksClientProps) => {
         </div>
       </div>
 
-      <div className="grid gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
         {filtered.map((item) => (
           <div
             key={item.id}
-            className={`flex flex-col md:flex-row items-start md:items-center gap-4 p-5 rounded-xl shadow-sm border transition-all duration-300 max-w-3xl mx-auto w-full ${
-              item.isSold ? "bg-green-50 border-green-200" : "bg-red-50 border-red-200"
-            }`}
+            className={`flex flex-col items-start gap-4 p-5 rounded-xl shadow-sm border transition-all duration-300 w-full ${item.isSold ? "bg-green-50 border-green-200" : "bg-red-50 border-red-200"
+              }`}
           >
+
             <div className="w-full md:w-32 h-32 overflow-hidden rounded-md border">
               <ImageForAdmin coverImage={item.coverUrl} />
             </div>
