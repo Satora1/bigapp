@@ -1,4 +1,3 @@
-import React from 'react';
 import { Button } from './ui/button';
 import BookCover from './BookCover';
 import { db } from '@/database/drizzle';
@@ -9,16 +8,19 @@ import Link from 'next/link';
 import Favorites from './Favorites';
 import RemoveFavorites from './RemoveFavorites';
 import BuyRequestForm from '@/app/admin/forms/BuyRequestForm';
+import BuyRequestSection from './BuyRequestSection';
 
 interface Props extends Book {
   userId: string;
   favoriteId: string;
+  price: number;
 }
 
 const BookOverview = async ({
   id,
   userId,
   title,
+  price,
   author,
   genre,
   rating,
@@ -45,6 +47,7 @@ const BookOverview = async ({
     .where(eq(favorites.userId, user.id))
     .where(eq(favorites.bookId, id))
     .limit(1);
+
 
   const borrowingEligibility = {
     isEligible: availableCopies > 0 && user.status === 'APPROVED',
@@ -111,24 +114,28 @@ const BookOverview = async ({
             </Button>
           </li>
 
- <li>
-  <Button variant="secondary" className="h-20 w-50 px-10 flex items-center gap-3">
-    {favorite ? (
-      <RemoveFavorites userId={user.id} bookId={id} />
-    ) : (
-      <Favorites userId={user.id} bookId={id} coverUrl={coverUrl} />
-    )}
-  </Button>
-</li>
-
           <li>
+            <Button variant="secondary" className="h-20 w-50 px-10 flex items-center gap-3">
+              {favorite ? (
+                <RemoveFavorites userId={user.id} bookId={id} />
+              ) : (
+                <Favorites userId={user.id} bookId={id} coverUrl={coverUrl} />
+              )}
+            </Button>
+          </li>
+          <BuyRequestSection
+            userId={user.id}
+            bookId={id}
+            coverUrl={coverUrl}
+            vintedNickname={user.vintedNickname} title={title} price={price}          />
+          {/* <li>
             <BuyRequestForm
               userId={user.id}
               bookId={id}
               coverUrl={coverUrl}
               vintedNickname={user.vintedNickname}
             />
-          </li>
+          </li> */}
         </ul>
       </div>
 
