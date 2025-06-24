@@ -14,6 +14,7 @@ const Page = async () => {
       title: books.title,
       author: books.author,
       coverUrl: books.coverUrl,
+      coverUrl2: books.coverUrl2,
     })
     .from(favorites)
     .innerJoin(books, eq(favorites.bookId, books.id))
