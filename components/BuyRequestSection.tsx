@@ -4,20 +4,14 @@ import { useState } from "react";
 import { Button } from "./ui/button";
 
 interface BuyRequestSectionProps {
-  userId: string;
-  bookId: string;
   title: string;
   price: number;
-  coverUrl: string;
   vintedNickname: string | null;
 }
 
 const BuyRequestSection = ({
-  userId,
-  bookId,
   title,
   price,
-  coverUrl,
   vintedNickname,
 }: BuyRequestSectionProps) => {
   const [showForm, setShowForm] = useState(false);
