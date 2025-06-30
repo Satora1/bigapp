@@ -27,7 +27,7 @@ export const bookSchema = z.object({
   coverUrl2: z.string().optional(),
   coverColor: z.string().trim().regex(/^#[0-9A-F]{6}$/i, "Invalid hex color code"),
   videoUrl: z.string().optional(),
-  vintedLink: z.string().optional(),
+  vintedLink: z.string(),
   summary: z.string().trim().min(10),
 
 })    
