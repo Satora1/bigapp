@@ -1,7 +1,7 @@
 import AdminBooksClient from '@/components/admin/SearchComponents/AdminClientItems';
 import { db } from '@/database/drizzle';
 import { books } from '@/database/schema';
-
+//TODO
 const Page = async () => {
     const items = await db.select().from(books).limit(100); // można więcej
 
