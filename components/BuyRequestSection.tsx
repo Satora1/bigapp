@@ -2,24 +2,45 @@
 
 import { useState } from "react";
 import { Button } from "./ui/button";
+import Buy from "@/app/admin/forms/BuyRequestForm";
+import buyRequests from "@/lib/actions/buyRequest";
 
 interface BuyRequestSectionProps {
     title: string;
     price: number;
     vintedNickname: string | null;
+    userId:string;
+     bookId: string;
+  coverUrl: string;
 }
 
 const BuyRequestSection = ({
     title,
     price,
     vintedNickname,
+    userId,
+    bookId,
+    coverUrl
 }: BuyRequestSectionProps) => {
     const [showForm, setShowForm] = useState(false);
 
-    const handleSubmit = () => {
-        alert("Prośba została wysłana!");
+  const handleSubmit = async () => {
+    try {
+        await buyRequests({
+            userId: userId, // uzupełnij dynamicznie
+            bookId: bookId,            // uzupełnij dynamicznie
+            coverUrl:coverUrl,       // uzupełnij dynamicznie
+            vintedNickname: vintedNickname ??"brak",
+        });
+
+       // alert("Prośba została wysłana!");
         setShowForm(false);
-    };
+    } catch (error) {
+        console.error("Błąd przy wysyłaniu prośby:", error);
+        alert("Wystąpił błąd");
+    }
+};
+
 
     return (
         <section className="w-full flex flex-col items-center justify-center">
@@ -63,6 +84,7 @@ const BuyRequestSection = ({
                                 className="bg-green-600 hover:bg-green-700 text-white"
                             >
                                 Wyślij prośbę
+                            
                             </Button>
                             <Button onClick={() => setShowForm(false)} variant="outline">
                                 Anuluj

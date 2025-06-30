@@ -47,3 +47,4 @@ const Buy: React.FC<BuyProps> = ({ userId, bookId, coverUrl,vintedNickname }) =>
 };
 
 export default Buy;
+  
