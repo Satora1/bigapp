@@ -16,11 +16,12 @@ const BookList = ({ title, books, containerClassName, author }: Props) => {
       <h2 className="font-bebas-neue text-4xl text-light-100 ">{title}</h2>
       <h2 className="font-bebas-neue text-4xl text-light-100 ">{author}</h2>
       <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-        {books.map((book) => (
-          <BookCard key={book.title} {...book}  />
-        ))}
+        {books.map((book) =>
+
+          book.description.includes("https://") ? null : <BookCard key={book.title} {...book} />
+        )}
       </ul>
     </section>
   );
 };
-export default BookList;
+export default BookList;  

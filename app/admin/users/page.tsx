@@ -9,11 +9,11 @@ const Users = async () => {
     return (
         <div className="p-6">
             <h1 className="text-2xl font-semibold mb-4">Users List</h1>
-            <ul className="space-y-2">
+           <ul className="grid grid-cols-3 space-y-2">
                 {data.map((user) => (
                     <li
                         key={user.id}
-                        className="p-4 rounded-md bg-gray-100 text-black shadow w-[400px]"
+                        className="p-4 rounded-md bg-gray-100 text-black shadow w-[400px] "
                     >
                         <p className='ml-2'><strong>ID:</strong> {user.id}</p>
                         <p className='ml-2'><strong>Name:</strong> {user.fullName}</p>
