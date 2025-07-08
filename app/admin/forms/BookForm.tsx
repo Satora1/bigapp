@@ -13,7 +13,7 @@ import {
     FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { useRouter } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 import { bookSchema } from "@/lib/validations";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
@@ -62,6 +62,7 @@ const BookForm = ({ type,
         console.log("✅ onSubmit fired:", values);
         if (result.success) {
             router.push(`/admin/books/${result.data.id}`)
+            redirect(`/admin/books/`)
         }
         else toast("error", {
             description: result.message,
