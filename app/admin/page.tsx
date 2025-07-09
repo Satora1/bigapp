@@ -16,6 +16,11 @@ const Page = async () => {
     0
   )
 
+  const totalSoldItems = items.reduce(
+    (sum, item) => item.isSold ? sum + (item.totalCopies || 0) : sum,
+    0
+  );
+
   const bestSold = items.reduce((sum, item) => sum + (Number(item.price || 0) - Number(item.priceBought || 0)) * Number(item.totalCopies || 0), 0) - priceNotSoldItems
 
   const bruttoZysk = items.reduce((sum, item) => sum + Number(item.soldPrice || 0) * Number(item.totalCopies || 0), 0)
@@ -30,6 +35,12 @@ const Page = async () => {
     { label: '📈 Zysk sugerowany Brutto', value: fixedBSZ, bg: 'bg-green-100', text: 'text-green-900' },
     { label: '📈 Łączny sugerowany zysk', value: bestSold, bg: 'bg-orange-100', text: 'text-orange-900' },
     { label: '📈 Łączny zysk', value: totalProfit, bg: 'bg-green-100', text: 'text-green-900' },
+    { label: '📈 Ile się sprzedało', value: totalSoldItems, bg: 'bg-green-100', text: 'text-green-900' },
+    { label: '📈 Średni zysk', value: totalProfit / totalSoldItems, bg: 'bg-green-100', text: 'text-green-900' },
+        { label: '📈 Średnia cena', value: bruttoZysk / totalSoldItems, bg: 'bg-green-100', text: 'text-green-900' },
+
+
+
   ]
 
   return (
@@ -55,12 +66,12 @@ const Page = async () => {
             const bought = Number(item.priceBought || 0) * Number(item.totalCopies || 0)
             const sold = Number(item.soldPrice || 0) * Number(item.totalCopies || 0)
             let profit = sold - bought
-if(profit<0){
-  profit = 0
-}
-else{
-  profit = profit
-}
+            if (profit < 0) {
+              profit = 0
+            }
+            else {
+              profit = profit
+            }
             return (
               <div
                 key={item.id}
