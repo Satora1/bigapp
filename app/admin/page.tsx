@@ -30,14 +30,14 @@ const Page = async () => {
   const fixedBSZ = bruttoSZ - totalBoughtPrice
 
   const stats = [
-    { label: '💰 Łączny koszt zakupów', value: totalSpent, bg: 'bg-blue-100', text: 'text-blue-900' },
-    { label: '📈 Zysk Brutto', value: bruttoZysk, bg: 'bg-green-100', text: 'text-green-900' },
-    { label: '📈 Zysk sugerowany Brutto', value: fixedBSZ, bg: 'bg-green-100', text: 'text-green-900' },
-    { label: '📈 Łączny sugerowany zysk', value: bestSold, bg: 'bg-orange-100', text: 'text-orange-900' },
-    { label: '📈 Łączny zysk', value: totalProfit, bg: 'bg-green-100', text: 'text-green-900' },
-    { label: '📈 Ile się sprzedało', value: totalSoldItems, bg: 'bg-green-100', text: 'text-green-900' },
-    { label: '📈 Średni zysk', value: totalProfit / totalSoldItems, bg: 'bg-green-100', text: 'text-green-900' },
-        { label: '📈 Średnia cena', value: bruttoZysk / totalSoldItems, bg: 'bg-green-100', text: 'text-green-900' },
+    { label: '💰 Łączny koszt zakupów', value: totalSpent, bg: 'bg-blue-200', text: 'text-blue-900' },
+    { label: '📈 Zysk Brutto', value: bruttoZysk, bg: 'bg-green-200', text: 'text-green-900' },
+    { label: '📈 Zysk sugerowany Brutto', value: fixedBSZ, bg: 'bg-green-200', text: 'text-green-900' },
+    { label: '📈 Łączny sugerowany zysk', value: bestSold, bg: 'bg-orange-200', text: 'text-orange-900' },
+    { label: '📈 Łączny zysk', value: totalProfit, bg: 'bg-green-200', text: 'text-green-900' },
+    { label: '📈 Ile się sprzedało', value: totalSoldItems, bg: 'bg-green-200', text: 'text-green-900' },
+    { label: '📈 Średni zysk', value: totalProfit / totalSoldItems, bg: 'bg-green-200', text: 'text-green-900' },
+    { label: '📈 Średnia cena', value: bruttoZysk / totalSoldItems, bg: 'bg-green-200', text: 'text-green-900' },
 
 
 

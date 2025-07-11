@@ -1,4 +1,6 @@
+import RemoveItem from '@/components/DelateBuyRequest'
 import ImageForAdmin from '@/components/ImageForAdmin'
+import RemoveFavorites from '@/components/RemoveFavorites'
 import { db } from '@/database/drizzle'
 import { buyRequest } from '@/database/schema'
 import React from 'react'
@@ -19,13 +21,15 @@ const page = async () => {
             <div className="space-y-3">
               <h3 className="text-lg font-semibold text-gray-900">🧑 User ID: {item.id}</h3>
               <p className="text-sm text-gray-600">📚 Book ID: <span className="font-medium text-gray-800">{item.bookId}</span></p>
-              
+
               <div className="aspect-[3/4] overflow-hidden rounded-md">
                 <ImageForAdmin coverImage={item.coverUrl} />
               </div>
 
               <p className="text-sm text-gray-600">🔖 Vinted Nickname: <span className="font-medium text-gray-800">{item.vintedNickname}</span></p>
+
             </div>
+            <RemoveItem userId={item.userId} bookId={item.bookId} />
           </li>
         ))}
       </ul>
