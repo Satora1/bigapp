@@ -20,7 +20,7 @@ const page = async () => {
           >
             <div className="space-y-3">
               <h3 className="text-lg font-semibold text-gray-900">🧑 User ID: {item.id}</h3>
-              <p className="text-sm text-gray-600">📚 Book ID: <span className="font-medium text-gray-800">{item.bookId}</span></p>
+              <p className="text-sm text-gray-600">📚Item ID: <span className="font-medium text-gray-800">{item.bookId}</span></p>
 
               <div className="aspect-[3/4] overflow-hidden rounded-md">
                 <ImageForAdmin coverImage={item.coverUrl} />

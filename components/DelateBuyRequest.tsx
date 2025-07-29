@@ -24,21 +24,15 @@ const RemoveItem: React.FC<RemoveItemProps> = ({ userId, bookId }) => {
     }
 
     return (
-        <Button
-            onClick={handleRemoveItem}
-            className="cursor-pointer h-20 w-25 "
-        ><div className='flex flex-row items-center justify-center ml-3 text-xl'>
-               
+<Button
+  onClick={handleRemoveItem}
+  className="cursor-pointer h-20 w-40 flex items-center justify-center bg-red-500 hover:bg-red-600 text-white rounded-md shadow-md transition-colors duration-300"
+>
+  <div className="text-xl font-semibold select-none">
+    Delete
+  </div>
+</Button>
 
-                <img
-                    src={"/icons/add.svg"}
-                    alt=""
-                    className="w-20 h-20"
-                />
-
-            </div>
-
-        </Button>
     )
 }
 
