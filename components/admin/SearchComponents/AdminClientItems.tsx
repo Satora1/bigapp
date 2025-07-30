@@ -56,7 +56,7 @@ const AdminBooksClient = ({ items }: AdminBooksClientProps) => {
               </p>
             </div>
 
-            <div className="md:ml-auto">
+            <div className="md:ml-auto ">
               <UpdateSoldForm
                 bookId={item.id}
                 defaultValues={{
