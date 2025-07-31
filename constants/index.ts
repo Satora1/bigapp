@@ -39,6 +39,11 @@ export const adminSideBarLinks = [
     route: "/admin/account-requests",
     text: "Account Requests",
   },
+    {
+    img: "/icons/admin/users.svg",
+    route: "/admin/files",
+    text: "Files",
+  },
 ];
 
 export const FIELD_NAMES = {
