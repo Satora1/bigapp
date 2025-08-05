@@ -15,34 +15,34 @@ const page = async () => {
       <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {items.map((item) => (
           <li
-  key={item.id}
-  className="bg-white shadow-md rounded-xl p-4 border border-gray-200 hover:shadow-lg transition text-sm flex flex-col items-center space-y-4"
->
-  {/* Obrazek */}
-  <div className="aspect-[3/4] overflow-hidden rounded-md max-w-[300px] w-full mt-10">
-    <ImageForAdmin coverImage={item.coverUrl} />
-  </div>
+            key={item.id}
+            className="bg-white shadow-md rounded-xl p-4 border border-gray-200 hover:shadow-lg transition text-sm flex flex-col items-center space-y-4 bg-gray-200"
+          >
+            {/* Obrazek */}
+            <div className="aspect-[3/4] overflow-hidden rounded-md max-w-[300px] w-full mt-10">
+              <ImageForAdmin coverImage={item.coverUrl} />
+            </div>
 
-  {/* Informacje */}
-  <div className="w-full text-center space-y-1">
-    <h2 className="text-sm font-medium text-gray-800 break-all">🧑 User ID: {item.id}</h2>
-    <p className="text-xs text-gray-600">
-      📚Item ID: <span className="font-medium text-gray-800">{item.bookId}</span>
-    </p>
-    <p className="text-xs text-gray-600">
-      🔖 Vinted Nickname: <span className="font-medium text-gray-800">{item.vintedNickname}</span>
-    </p>
-  </div>
+            {/* Informacje */}
+            <div className="w-full text-center space-y-1 ">
+              <h2 className="text-sm font-medium text-gray-800 break-all">🧑 User ID: {item.id}</h2>
+              <p className="text-xs text-gray-600">
+                📚Item ID: <span className="font-medium text-gray-800">{item.bookId}</span>
+              </p>
+              <p className="text-xs text-gray-600">
+                🔖 Vinted Nickname: <span className="font-medium text-gray-800">{item.vintedNickname}</span>
+              </p>
+            </div>
 
-  {/* Przycisk */}
-  <div>
-    <button
-      className="px-4 py-1.5 bg-red-500 hover:bg-red-600 text-white text-sm rounded shadow transition-all"
-    >
-      Delete
-    </button>
-  </div>
-</li>
+            {/* Przycisk */}
+            <div>
+              <button
+                className="px-4 py-1.5 bg-red-500 hover:bg-red-600 text-white text-sm rounded shadow transition-all"
+              >
+                Delete
+              </button>
+            </div>
+          </li>
 
 
         ))}
