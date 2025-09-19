@@ -34,31 +34,36 @@ const Layout = async ({ children }: { children: ReactNode }) => {
         }).where(eq(users.id, session?.user?.id))
     })
 
-return (
-  <main className="root-container flex flex-col lg:flex-row min-h-screen">
-    {/* Lewy bok */}
-    <aside className="hidden lg:flex w-52 shrink-0 items-start justify-start p-4 bg-gray-50">
-      <div className="sticky top-20 w-full text-center">
-        <p className="text-lg font-bold text-gray-700">Twoja reklama</p>
-      </div>
-    </aside>
+    return (
+        <main className="root-container flex flex-col lg:flex-row min-h-screen">
+            {/* Lewy bok */}
+            <aside className="hidden lg:flex w-52 shrink-0 items-start justify-start p-4 bg-gray-50">
+                <div className="sticky top-20 w-full">
+                    <div className="w-full h-64 bg-gray-200 flex items-center justify-center rounded-lg shadow-md">
+                        <span className="text-gray-600 font-bold">Twoja reklama</span>
+                    </div>
+                </div>
+            </aside>
 
-    {/* Główny content */}
-    <div className="flex-1">
-      <div className="mx-auto max-w-7xl">
-        <Header session={session} />
-        <div className="mt-20 pb-20">{children}</div>
-      </div>
-    </div>
+            {/* Główny content */}
+            <div className="flex-1">
+                <div className="mx-auto max-w-7xl">
+                    <Header session={session} />
+                    <div className="mt-20 pb-20">{children}</div>
+                </div>
+            </div>
 
-    {/* Prawy bok */}
-    <aside className="hidden lg:flex w-52 shrink-0 items-start justify-end p-4 bg-gray-50">
-      <div className="sticky top-20 w-full text-center">
-        <p className="text-lg font-bold text-gray-700">Twoja reklama</p>
-      </div>
-    </aside>
-  </main>
-)
+            {/* Prawy bok */}
+            <aside className="hidden lg:flex w-52 shrink-0 items-start justify-end p-4 bg-gray-50">
+                <div className="sticky top-20 w-full">
+                    <div className="w-full h-64 bg-gray-200 flex items-center justify-center rounded-lg shadow-md">
+                        <span className="text-gray-600 font-bold">Twoja reklama</span>
+                    </div>
+                </div>
+            </aside>
+        </main>
+    )
+
 
 
 }
