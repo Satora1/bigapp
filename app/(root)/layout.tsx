@@ -34,16 +34,33 @@ const Layout = async ({ children }: { children: ReactNode }) => {
         }).where(eq(users.id, session?.user?.id))
     })
 
-    return (
-        <main className='root-container'>
-            <div className='mx-auto max-w-7xl'>
-                <Header session={session} />
-                <div className='mt-20 pb-20'>
-                    {children}
-                </div>
-            </div>
-        </main>
-    )
+return (
+  <main className="root-container flex flex-col lg:flex-row min-h-screen">
+    {/* Lewy bok */}
+    <aside className="hidden lg:flex w-52 shrink-0 items-start justify-start p-4 bg-gray-50">
+      <div className="sticky top-20 w-full text-center">
+        <p className="text-lg font-bold text-gray-700">Twoja reklama</p>
+      </div>
+    </aside>
+
+    {/* Główny content */}
+    <div className="flex-1">
+      <div className="mx-auto max-w-7xl">
+        <Header session={session} />
+        <div className="mt-20 pb-20">{children}</div>
+      </div>
+    </div>
+
+    {/* Prawy bok */}
+    <aside className="hidden lg:flex w-52 shrink-0 items-start justify-end p-4 bg-gray-50">
+      <div className="sticky top-20 w-full text-center">
+        <p className="text-lg font-bold text-gray-700">Twoja reklama</p>
+      </div>
+    </aside>
+  </main>
+)
+
+
 }
 
 export default Layout
