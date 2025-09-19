@@ -8,7 +8,7 @@ interface RemoveItemProps {
     bookId: string
 }
 
-const RemoveItem: React.FC<RemoveItemProps> = ({ userId, bookId }) => {
+const HandleRemoveItem: React.FC<RemoveItemProps> = ({ userId, bookId }) => {
 
     const handleRemoveItem = async () => {
         try {
@@ -36,4 +36,4 @@ const RemoveItem: React.FC<RemoveItemProps> = ({ userId, bookId }) => {
     )
 }
 
-export default RemoveItem
+export default HandleRemoveItem

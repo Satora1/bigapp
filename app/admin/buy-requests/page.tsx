@@ -1,3 +1,4 @@
+import HandleRemoveItem from '@/components/DelateBuyRequest'
 import RemoveItem from '@/components/DelateBuyRequest'
 import ImageForAdmin from '@/components/ImageForAdmin'
 import RemoveFavorites from '@/components/RemoveFavorites'
@@ -7,6 +8,7 @@ import React from 'react'
 
 const page = async () => {
   const items = await db.select().from(buyRequest)
+
 
   return (
     <div className="min-h-screen bg-gray-50 py-6 px-2 md:px-8">
@@ -35,13 +37,7 @@ const page = async () => {
             </div>
 
             {/* Przycisk */}
-            <div>
-              <button
-                className="px-4 py-1.5 bg-red-500 hover:bg-red-600 text-white text-sm rounded shadow transition-all"
-              >
-                Delete
-              </button>
-            </div>
+            <HandleRemoveItem userId={item.userId} bookId={item.bookId} />
           </li>
 
 

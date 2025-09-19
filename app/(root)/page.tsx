@@ -15,13 +15,12 @@ const Home = async () => {
 
   return (
     <>
-      <BookOverview {...latestBooks[0]} userId={session?.user?.id as string} />
+      <BookOverview favoriteId={""} {...latestBooks[0]} userId={session?.user?.id as string} />
 
       <BookList
         title="Latest Items"
         books={latestBooks.slice(1)}
-        containerClassName="mt-28"
-            />
+        containerClassName="mt-28" author={""}            />
 <div className="mt-20 text-xl">
   <h2 className="text-white">Satora.shop ®</h2>
 </div>
