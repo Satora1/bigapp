@@ -32,6 +32,12 @@ interface Favorites {
   userId: string
   bookId: string
 }
+interface SupportMessagr{
+  id: string
+  userId: string
+  nickname: string
+  message: string
+}
 
 interface BuyRequest{
   id:string

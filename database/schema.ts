@@ -40,7 +40,7 @@ export const users = pgTable("users", {
 
 export const books = pgTable("books", {
   id: uuid("id").notNull().primaryKey().defaultRandom(),
-    title: varchar("title", { length: 100 }).notNull(),
+  title: varchar("title", { length: 100 }).notNull(),
   author: varchar("author", { length: 100 }).notNull(),
   genre: varchar("genre", { length: 50 }).notNull(),
   price: doublePrecision("price").notNull(),
@@ -66,7 +66,7 @@ export const favorites = pgTable("favorites", {
   userId: uuid("user_id")
     .references(() => users.id)
     .notNull(),
-    bookId: uuid("book_id").references(() => books.id).notNull(),
+  bookId: uuid("book_id").references(() => books.id).notNull(),
   coverUrl: text("cover_url").notNull(),
 })
 
@@ -78,8 +78,16 @@ export const buyRequest = pgTable("buy_requests", {
   vintedNickname: varchar("vinted_nickname", { length: 255 }).notNull(),
 });
 
+export const supportMessages = pgTable("support_messages", {
+  id: uuid("id").notNull().primaryKey().defaultRandom(),
+  userId: uuid("user_id").references(() => users.id).notNull(),
+  nickname: varchar("nickname", { length: 255 }).notNull(),
+  message: text("message").notNull(),
+})
+
+
 export const borrowRecords = pgTable("borrow_records", {
-  id: uuid("id").notNull().primaryKey().defaultRandom(), 
+  id: uuid("id").notNull().primaryKey().defaultRandom(),
   userId: uuid("user_id")
     .references(() => users.id)
     .notNull(),

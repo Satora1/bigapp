@@ -27,6 +27,16 @@ const Header = async () => {
               <h2 className="text-xl">Account</h2>
             </Button>
           </form>
+             <form
+            action={async () => {
+              "use server";
+              redirect("/support");
+            }}
+          >
+            <Button className="h-20 w-40 px-12">
+              <h2 className="text-xl">Support</h2>
+            </Button>
+          </form>
 
           <form
             action={async () => {

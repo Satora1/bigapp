@@ -10,7 +10,12 @@ export const navigationLinks = [
     href: "/my-profile",
     label: "My Profile",
   },
- 
+   {
+    img: "/icons/user.svg",
+    selectedImg: "/icons/user-fill.svg",
+    href: "/support",
+    label: "Support",
+  },
 ];
 
 export const adminSideBarLinks = [
