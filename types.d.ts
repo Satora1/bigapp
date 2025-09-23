@@ -37,6 +37,7 @@ interface SupportMessagr{
   userId: string
   nickname: string
   message: string
+  createdAt: Date
 }
 
 interface BuyRequest{

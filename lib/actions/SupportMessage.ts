@@ -9,9 +9,10 @@ interface Props {
     userId: string;
     nickname: string;
     message: string;
+    createdAt: Date;
 }
 
-const SuportMessageAction = async ({ userId, nickname, message }: Props) => {
+const SuportMessageAction = async ({ userId, nickname, message,createdAt}: Props) => {
     try {
         // Sprawdź, czy już istnieje ulubiony rekord
         // const existing = await db
@@ -29,6 +30,7 @@ const SuportMessageAction = async ({ userId, nickname, message }: Props) => {
             userId,
             nickname,
             message,
+            createdAt
             
         }).returning({ id: supportMessages.id });
 

@@ -1,3 +1,4 @@
+import { create } from "domain";
 import {
   varchar,
   uuid,
@@ -83,6 +84,7 @@ export const supportMessages = pgTable("support_messages", {
   userId: uuid("user_id").references(() => users.id).notNull(),
   nickname: varchar("nickname", { length: 255 }).notNull(),
   message: text("message").notNull(),
+  createdAt: timestamp("created_at", { withTimezone: true }).defaultNow(),
 })
 
 

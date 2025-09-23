@@ -15,6 +15,13 @@
       "when": 1758535010368,
       "tag": "0001_strange_charles_xavier",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1758613555030,
+      "tag": "0002_friendly_spiral",
+      "breakpoints": true
     }
   ]
 }
