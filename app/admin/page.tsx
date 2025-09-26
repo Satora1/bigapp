@@ -30,7 +30,6 @@ const Page = async () => {
         ))}
       </section>
 
-      {/* 🔹 tu przekazujesz items do klienta */}
       <SortForItemsOnPage items={items} />
     </main>
   )
