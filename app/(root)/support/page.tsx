@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useSession } from 'next-auth/react';
 import { Button } from '@/components/ui/button';
 import SuportMessageAction from '@/lib/actions/SupportMessage';
+import { Textarea } from '@/components/ui/textarea';
 
 const SupportForm = () => {
   const { data: session } = useSession();
@@ -40,8 +41,7 @@ const SupportForm = () => {
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <div className="flex flex-col">
           <label htmlFor="nickname" className="mb-1 font-semibold">Nick na Vinted</label>
-          <input
-            type="text"
+          <Textarea
             id="nickname"
             value={nickname}
             onChange={(e) => setNickname(e.target.value)}
@@ -53,7 +53,7 @@ const SupportForm = () => {
 
         <div className="flex flex-col">
           <label htmlFor="message" className="mb-1 font-semibold">Twój problem / pytanie</label>
-          <textarea
+          <Textarea
             id="message"
             value={message}
             onChange={(e) => setMessage(e.target.value)}
