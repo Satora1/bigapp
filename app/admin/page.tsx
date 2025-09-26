@@ -8,10 +8,23 @@ const Page = async () => {
 
   // tu zostaje twoja logika dla stats
   const totalSpent = items.reduce((sum, item) => sum + Number(item.priceBought || 0) * Number(item.totalCopies || 0), 0)
+  const totalBoughtPrice = items.filter(item => !item.isSold).reduce((sum, item) => sum + ((item.price || 0) * (item.totalCopies)), 0)
+  const priceNotSoldItems = items.filter(item => !item.isSold).reduce((sum, item) => sum + (item.price || 0), 0)
+  const totalProfit = items.reduce((sum, item) => sum + (Number(item.soldPrice || 0) - Number(item.priceBought || 0)) * Number(item.totalCopies || 0), 0)
+  const totalSoldItems = items.reduce((sum, item) => item.isSold ? sum + (item.totalCopies || 0) : sum, 0);
+  const bestSold = items.reduce((sum, item) => sum + (Number(item.price || 0) - Number(item.priceBought || 0)) * Number(item.totalCopies || 0), 0) - priceNotSoldItems
+  const bruttoZysk = items.reduce((sum, item) => sum + Number(item.soldPrice || 0) * Number(item.totalCopies || 0), 0)
+  const bruttoSZ = items.reduce((sum, item) => sum + Number(item.price || 0) * Number(item.totalCopies || 0), 0)
+  const fixedBSZ = bruttoSZ - totalBoughtPrice
 
-  const stats = [
-    { label: '💰 Łączny koszt zakupów', value: totalSpent, bg: 'bg-blue-200', text: 'text-blue-900' },
-    // itd...
+  const stats = [{ label: '💰 Łączny koszt zakupów', value: totalSpent, bg: 'bg-blue-200', text: 'text-blue-900' },
+  { label: '📈 Zysk Brutto', value: bruttoZysk, bg: 'bg-green-200', text: 'text-green-900' },
+  { label: '📈 Zysk sugerowany Brutto', value: fixedBSZ, bg: 'bg-green-200', text: 'text-green-900' },
+  { label: '📈 Łączny sugerowany zysk', value: bestSold, bg: 'bg-orange-200', text: 'text-orange-800' },
+  { label: '📈 Łączny zysk', value: totalProfit, bg: 'bg-green-200', text: 'text-green-900' },
+  { label: '📈 Ile się sprzedało', value: totalSoldItems, bg: 'bg-green-200', text: 'text-green-900' },
+  { label: '📈 Średni zysk', value: totalProfit / totalSoldItems, bg: 'bg-green-200', text: 'text-green-900' },
+  { label: '📈 Średnia cena', value: bruttoZysk / totalSoldItems, bg: 'bg-green-200', text: 'text-green-900' },
   ]
 
   return (
